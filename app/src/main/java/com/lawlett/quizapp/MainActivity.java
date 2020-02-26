@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mViewModel = ViewModelProviders
-                .of(this)
+                .of(this )
                 .get(MainViewModel.class);
 
         final ViewPager viewPager = findViewById(R.id.view_pager);

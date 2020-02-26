@@ -13,7 +13,6 @@ public class MainViewModel extends ViewModel {
     public MutableLiveData<Integer> counter = new MutableLiveData<>();
     public MutableLiveData<ArrayList>   history = new MutableLiveData<>();
 
-
     void onIncrementClick() {
         mCounter++;
         list.add("+");

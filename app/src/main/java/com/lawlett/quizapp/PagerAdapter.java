@@ -1,3 +1,4 @@
+
 package com.lawlett.quizapp;
 
 import android.os.Bundle;
@@ -21,7 +22,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
         fragment.setArguments(bundle);
         return fragment;
     }
-
     @Override
     public int getCount() {
         return 3;

@@ -1,6 +1,5 @@
 package com.lawlett.quizapp;
 
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,10 +16,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class PageFragment extends Fragment {
     TextView tv_text;
     Button btn_increment, btn_decrement;
@@ -36,7 +31,6 @@ public class PageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_page, container, false);
-
 
     }
 
