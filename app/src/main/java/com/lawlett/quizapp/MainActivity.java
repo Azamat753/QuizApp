@@ -2,25 +2,26 @@ package com.lawlett.quizapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.lawlett.quizapp.main.MainViewModel;
 
-public class MainActivity extends AppCompatActivity {
-    private TextView mCounterTV;
+public class MainActivity extends AppCompatActivity  {
+
     private MainViewModel mViewModel;
     MenuItem prevMenuItem;
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mViewModel = ViewModelProviders
-                .of(this )
+                .of(this)
                 .get(MainViewModel.class);
 
         final ViewPager viewPager = findViewById(R.id.view_pager);
@@ -42,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_recents:
-                            viewPager.setCurrentItem(0);
+                        viewPager.setCurrentItem(0);
+
                         break;
                     case R.id.action_favorites:
                         viewPager.setCurrentItem(1);
@@ -56,12 +58,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 if (prevMenuItem != null) {
@@ -69,14 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     bottomNavigationView.getMenu().getItem(0).setChecked(false);
                 }
-                Log.d("page", "onPageSelected: " + position);
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
                 prevMenuItem = bottomNavigationView.getMenu().getItem(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
             }
         });
     }

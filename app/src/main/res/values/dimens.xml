@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_image_width">100dp</dimen>
+    <dimen name="main_image_height">100dp</dimen>
+    <dimen name="top_margin_from_title">20dp</dimen>
+    <dimen name="margin_q_amount">20dp</dimen>
+    <dimen name="right_margin_q_amount">180dp</dimen>
+    <dimen name="right_margin_amount_number">70dp</dimen>
+    <dimen name="right_margin_seekBar">23dp</dimen>
+    <dimen name="left_margin_hint_category">43dp</dimen>
+    <dimen name="width_seekbar">270dp</dimen>
+    <dimen name="tx_size_btn">20sp</dimen>
+    <dimen name="title_size">30sp</dimen>
+    <dimen name="btn_width">250dp</dimen>
+    <dimen name="btn_margin_bottom">120dp</dimen>
+</resources>

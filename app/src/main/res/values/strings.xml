@@ -3,4 +3,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="quiz">Quiz</string>
+    <string name="question_amount">Question amount:</string>
+    <string name="_5">5</string>
+    <string name="category">Category</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="start">START</string>
 </resources>

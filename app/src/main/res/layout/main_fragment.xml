@@ -1,13 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment">
+    android:padding="16dp"
+    tools:context=".main.MainFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quiz"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="@dimen/main_image_width"
+        android:layout_height="@dimen/main_image_height"
+        android:layout_marginTop="@dimen/top_margin_from_title"
+        android:src="@drawable/illustration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/q_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_q_amount"
+        android:layout_marginEnd="@dimen/right_margin_q_amount"
+        android:hint="@string/question_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_image" />
+
+    <TextView
+        android:id="@+id/q_amount_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_q_amount"
+        android:layout_marginEnd="@dimen/right_margin_amount_number"
+        android:text="@string/_5"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/q_amount"
+        app:layout_constraintTop_toBottomOf="@+id/main_image" />
+
+    <SeekBar
+        android:id="@+id/main_seekBar"
+        android:layout_width="@dimen/width_seekbar"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_q_amount"
+        android:layout_marginEnd="@dimen/right_margin_seekBar"
+        android:min="5"
+        android:max="50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/q_amount_number" />
+
+    <TextView
+        android:id="@+id/hint_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/left_margin_hint_category"
+        android:layout_marginTop="@dimen/margin_q_amount"
+        android:hint="@string/category"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_seekBar" />
+
+    <Spinner
+        android:id="@+id/spinner_category"
+        android:layout_width="@dimen/width_seekbar"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_q_amount"
+        android:layout_marginEnd="@dimen/right_margin_seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hint_category" />
+
+    <TextView
+        android:id="@+id/hint_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/left_margin_hint_category"
+        android:layout_marginTop="@dimen/margin_q_amount"
+        android:hint="@string/difficulty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_category" />
+
+
+    <Spinner
+        android:id="@+id/spinner_difficulty"
+        android:layout_width="@dimen/width_seekbar"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_q_amount"
+        android:layout_marginEnd="@dimen/right_margin_seekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hint_difficulty" />
+
+    <Button
+        android:id="@+id/main_start_btn"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="60dp"
+        android:background="@drawable/start_btn_background"
+        android:text="@string/start"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/tx_size_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_difficulty" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

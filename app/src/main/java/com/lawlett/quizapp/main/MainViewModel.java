@@ -1,4 +1,4 @@
-package com.lawlett.quizapp;
+package com.lawlett.quizapp.main;
 
 import android.widget.ArrayAdapter;
 
