@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.lawlett.quizapp.R;
+import com.lawlett.quizapp.utils.SimpleOnSeekBarChangeListener;
 
 import java.util.ArrayList;
 
@@ -54,23 +55,16 @@ public class MainFragment extends Fragment {
         seekBar_amount = view.findViewById(R.id.q_amount_number);
         addInSpinner();
         addInSpinner2();
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+        seekBar.setOnSeekBarChangeListener(new SimpleOnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                super.onProgressChanged(seekBar, progress, fromUser);
                 seekBar_amount.setText(String.valueOf(progress));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
             }
         });
     }
+
 
     public void addInSpinner() {
         ArrayList<String> arrayList = new ArrayList<>();
@@ -128,6 +122,7 @@ public class MainFragment extends Fragment {
 
                 Toast.makeText(getContext(), "" + tutorialsName, Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 Toast.makeText(getContext(), "false", Toast.LENGTH_SHORT).show();
