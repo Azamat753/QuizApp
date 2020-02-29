@@ -1,5 +1,5 @@
 
-package com.lawlett.quizapp;
+package com.lawlett.quizapp.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

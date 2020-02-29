@@ -6,19 +6,20 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Build;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.lawlett.quizapp.data.model.Question;
+import com.lawlett.quizapp.data.remote.IQuizApiClient;
+import com.lawlett.quizapp.data.remote.QuizApiClient;
 import com.lawlett.quizapp.main.MainViewModel;
+import com.lawlett.quizapp.main.PagerAdapter;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -33,6 +34,19 @@ public class MainActivity extends AppCompatActivity  {
         mViewModel = ViewModelProviders
                 .of(this)
                 .get(MainViewModel.class);
+
+        new QuizApiClient().getQuestion(new IQuizApiClient.QuestionCallback() {
+            @Override
+            public void onSuccess(List<Question> questions) {
+
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        });
+
 
         final ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
@@ -57,7 +71,6 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
-
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -71,7 +84,4 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
     }
-
-
-
 }

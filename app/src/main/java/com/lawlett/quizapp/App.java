@@ -2,25 +2,19 @@ package com.lawlett.quizapp;
 
 import android.app.Application;
 
-import com.lawlett.data.QuizRepository;
+import com.lawlett.quizapp.data.local.QuizLocalDataSource;
+import com.lawlett.quizapp.data.remote.QuizApiClient;
+import com.lawlett.quizapp.data.remote.QuizRepository;
 
 public class App extends Application {
     private static QuizRepository quizRepository;
-    public static App instance;
-
+    
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
-
-    }
-
-
-    public static App getInstance() {
-        return instance;
-    }
-
-    public static QuizRepository getDatabase() {
-        return quizRepository;
+        quizRepository= new QuizRepository(
+                new QuizLocalDataSource(),
+                new QuizApiClient()
+        );
     }
 }

@@ -1,5 +1,7 @@
 package com.lawlett.quizapp.main;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.lawlett.quizapp.quiz.QuizActivity;
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.utils.SimpleOnSeekBarChangeListener;
 
@@ -27,6 +30,7 @@ public class MainFragment extends Fragment {
     SeekBar seekBar;
     Spinner spinnercat, spinnerdif;
 
+
     public static MainFragment newInstance() {
         return new MainFragment();
     }
@@ -35,7 +39,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.main_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
     @Override
@@ -46,6 +50,7 @@ public class MainFragment extends Fragment {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -53,9 +58,15 @@ public class MainFragment extends Fragment {
         spinnerdif = view.findViewById(R.id.spinner_difficulty);
         seekBar = view.findViewById(R.id.main_seekBar);
         seekBar_amount = view.findViewById(R.id.q_amount_number);
-        addInSpinner();
-        addInSpinner2();
+        SpinnerWithCategory();
+        SpinnerWithDifficulty();
 
+        view.findViewById(R.id.main_start_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), QuizActivity.class));
+            }
+        });
         seekBar.setOnSeekBarChangeListener(new SimpleOnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -66,17 +77,33 @@ public class MainFragment extends Fragment {
     }
 
 
-    public void addInSpinner() {
+    public void SpinnerWithCategory() {
         ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("Бишкек");
-        arrayList.add("Чуй");
-        arrayList.add("Нарын");
-        arrayList.add("Талас");
-        arrayList.add("Баткен");
-        arrayList.add("Ош");
-        arrayList.add("Джалал-Абад");
-        arrayList.add("Москва");
-        arrayList.add("Лондон");
+        arrayList.add("Any Category");
+        arrayList.add("General Knowledge");
+        arrayList.add("Entertainment:Books");
+        arrayList.add("Entertainment:Film");
+        arrayList.add("Entertainment:Music");
+        arrayList.add("Entertainment:Musicals & Theatres");
+        arrayList.add("Entertainment:Television");
+        arrayList.add("Entertainment:Video Games");
+        arrayList.add("Entertainment:Board Games");
+        arrayList.add("Science:Nature");
+        arrayList.add("Science:Computers");
+        arrayList.add("Science:Mathematics");
+        arrayList.add("Mythology");
+        arrayList.add("Sports");
+        arrayList.add("Geography");
+        arrayList.add("History");
+        arrayList.add("Politics");
+        arrayList.add("Art");
+        arrayList.add("Celebrities");
+        arrayList.add("Animals");
+        arrayList.add("Vehicles");
+        arrayList.add("Entertainment:Comics");
+        arrayList.add("Science:Gadgets");
+        arrayList.add("Entertainment:Japanese Anime & Manga");
+        arrayList.add("Entertainment:Japanese Cartoon & Animations");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, arrayList);
@@ -98,17 +125,12 @@ public class MainFragment extends Fragment {
         });
     }
 
-    public void addInSpinner2() {
+    public void SpinnerWithDifficulty() {
         ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("Бишкек");
-        arrayList.add("Чуй");
-        arrayList.add("Нарын");
-        arrayList.add("Талас");
-        arrayList.add("Баткен");
-        arrayList.add("Ош");
-        arrayList.add("Джалал-Абад");
-        arrayList.add("Москва");
-        arrayList.add("Лондон");
+        arrayList.add("Any Difficulty");
+        arrayList.add("Easy");
+        arrayList.add("Medium");
+        arrayList.add("Hard");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, arrayList);
