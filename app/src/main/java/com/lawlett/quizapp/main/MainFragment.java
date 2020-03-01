@@ -75,8 +75,6 @@ public class MainFragment extends Fragment {
             }
         });
     }
-
-
     public void SpinnerWithCategory() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Any Category");

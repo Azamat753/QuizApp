@@ -18,7 +18,6 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
         new QuizApiClient().getQuestion(new IQuizApiClient.QuestionCallback() {
             @Override
             public void onSuccess(List<Question> questions) {

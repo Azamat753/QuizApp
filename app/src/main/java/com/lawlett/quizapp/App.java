@@ -8,7 +8,7 @@ import com.lawlett.quizapp.data.remote.QuizRepository;
 
 public class App extends Application {
     private static QuizRepository quizRepository;
-    
+
     @Override
     public void onCreate() {
         super.onCreate();
