@@ -50,7 +50,7 @@ public class MainFragment extends Fragment {
 
     }
 
-    @SuppressLint("ResourceAsColor")
+//    @SuppressLint("ResourceAsColor")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -58,8 +58,8 @@ public class MainFragment extends Fragment {
         spinnerdif = view.findViewById(R.id.spinner_difficulty);
         seekBar = view.findViewById(R.id.main_seekBar);
         seekBar_amount = view.findViewById(R.id.q_amount_number);
-        SpinnerWithCategory();
-        SpinnerWithDifficulty();
+        addCategoryInSpinner();
+        addDifficultyInSpinner();
 
         view.findViewById(R.id.main_start_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +75,8 @@ public class MainFragment extends Fragment {
             }
         });
     }
-    public void SpinnerWithCategory() {
+
+    public void addCategoryInSpinner() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Any Category");
         arrayList.add("General Knowledge");
@@ -103,49 +104,42 @@ public class MainFragment extends Fragment {
         arrayList.add("Entertainment:Japanese Anime & Manga");
         arrayList.add("Entertainment:Japanese Cartoon & Animations");
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(),
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, arrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnercat.setAdapter(arrayAdapter);
         spinnercat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String tutorialsName = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Выбран город: " + tutorialsName, Toast.LENGTH_LONG).show();
 
-                Toast.makeText(getContext(), "" + tutorialsName, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(getContext(), "false", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
 
-    public void SpinnerWithDifficulty() {
+    public void addDifficultyInSpinner() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("Any Difficulty");
         arrayList.add("Easy");
         arrayList.add("Medium");
         arrayList.add("Hard");
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(),
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, arrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerdif.setAdapter(arrayAdapter);
         spinnerdif.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String tutorialsName = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), "Выбран город: " + tutorialsName, Toast.LENGTH_LONG).show();
 
-                Toast.makeText(getContext(), "" + tutorialsName, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(getContext(), "false", Toast.LENGTH_SHORT).show();
             }
         });
     }

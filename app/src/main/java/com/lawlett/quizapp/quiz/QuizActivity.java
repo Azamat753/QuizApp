@@ -1,6 +1,8 @@
 package com.lawlett.quizapp.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,20 +15,21 @@ import com.lawlett.quizapp.R;
 import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
-
+private QuizViewModel quizViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        new QuizApiClient().getQuestion(new IQuizApiClient.QuestionCallback() {
-            @Override
-            public void onSuccess(List<Question> questions) {
-                Log.d("", "onSuccess: ");
-            }
 
+        quizViewModel = ViewModelProviders
+                .of(this)
+                .get(QuizViewModel.class);
+
+    }
+    public void setQuizViewModel(){
+        quizViewModel.dataWithRetrofit.observe(this, new Observer<QuizApiClient>() {
             @Override
-            public void onFailure(Exception e) {
-                Log.d("", "onFailure: "+e.getLocalizedMessage());
+            public void onChanged(QuizApiClient quizApiClient) {
 
             }
         });

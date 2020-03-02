@@ -1,14 +1,14 @@
 package com.lawlett.quizapp.data.remote;
 
-import android.widget.Toast;
+import android.content.Intent;
 
 import com.lawlett.quizapp.data.model.Question;
 
 import java.util.List;
 
 public interface IQuizApiClient {
-
-    void getQuestion(QuestionCallback callback);
+   // int amount, Integer category, String difficulty,
+    void getQuestion( int amount,Integer category,String difficulty,QuestionCallback callback);
 
     interface QuestionCallback{
         void onSuccess(List<Question>questions);

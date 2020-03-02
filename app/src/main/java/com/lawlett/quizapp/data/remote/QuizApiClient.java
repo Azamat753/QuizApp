@@ -17,9 +17,9 @@ public class QuizApiClient implements IQuizApiClient {
     private QuizApi client = retrofit.create(QuizApi.class);
 
     @Override
-    public void getQuestion(final QuestionCallback callback) {
+    public void getQuestion(int amount, Integer category, String difficulty,final QuestionCallback callback) {
         Call<QuestionResponse> call = client.getQuestion(10,
-                "Sports","multiple",
+                2,"multiple",
                 "easy");
 
         call.enqueue(new Callback<QuestionResponse>() {
@@ -47,7 +47,7 @@ public class QuizApiClient implements IQuizApiClient {
         @GET("/api.php")
         Call<QuestionResponse> getQuestion(
                 @Query("amount") int amount,
-                @Query("category") String category,
+                @Query("category") Integer category,
                 @Query("type") String type,
                 @Query("difficulty") String difficulty
         );

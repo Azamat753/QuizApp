@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity  {
                 .of(this)
                 .get(MainViewModel.class);
 
+
+
+
         new QuizApiClient().getQuestion(new IQuizApiClient.QuestionCallback() {
             @Override
             public void onSuccess(List<Question> questions) {
