@@ -12,20 +12,20 @@ import com.lawlett.quizapp.data.remote.QuizApiClient;
 import java.util.List;
 
 public class QuizViewModel extends ViewModel {
-//Integer
+    //Integer
     public MutableLiveData<QuizApiClient> dataWithRetrofit = new MutableLiveData<>();
 
     void QueryOnData() {
-new QuizApiClient().getQuestion(10, 2, "easy", new IQuizApiClient.QuestionCallback() {
-    @Override
-    public void onSuccess(List<Question> questions) {
+        new QuizApiClient().getQuestion(10, 2, "easy", new IQuizApiClient.QuestionCallback() {
+            @Override
+            public void onSuccess(List<Question> questions) {
 
-    }
+            }
 
-    @Override
-    public void onFailure(Exception e) {
+            @Override
+            public void onFailure(Exception e) {
 
-    }
-});
+            }
+        });
     }
 }

@@ -38,17 +38,17 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-        new QuizApiClient().getQuestion(new IQuizApiClient.QuestionCallback() {
-            @Override
-            public void onSuccess(List<Question> questions) {
+     new QuizApiClient().getQuestion(10, 2, "easy", new IQuizApiClient.QuestionCallback() {
+         @Override
+         public void onSuccess(List<Question> questions) {
 
-            }
+         }
 
-            @Override
-            public void onFailure(Exception e) {
+         @Override
+         public void onFailure(Exception e) {
 
-            }
-        });
+         }
+     });
 
 
         final ViewPager viewPager = findViewById(R.id.view_pager);
