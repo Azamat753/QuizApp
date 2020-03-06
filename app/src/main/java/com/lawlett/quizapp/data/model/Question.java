@@ -19,7 +19,6 @@ public class Question {
     @SerializedName("incorrect_answers")
     private List<String> incorrectAnswer;
 
-
     public Question(String category, String type, String difficulty, String question, String correctAnswer, List<String> incorrectAnswer) {
         this.category = category;
         this.type = type;
