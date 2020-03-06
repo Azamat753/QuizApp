@@ -9,4 +9,10 @@
     <string name="category">Category</string>
     <string name="difficulty">Difficulty</string>
     <string name="start">START</string>
+    <string name="correct_answers_8_10">Correct answers 8/10</string>
+    <string name="difficulty_easy">Difficulty : Easy</string>
+    <string name="_12_may_2019_20_32">12 may 2019 20:32</string>
+    <string name="category_mixed">Category:Mixed</string>
+    <string name="history">History</string>
+    <string name="settings">Settings</string>
 </resources>

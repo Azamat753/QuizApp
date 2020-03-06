@@ -17,10 +17,9 @@ public class QuizApiClient implements IQuizApiClient {
     private QuizApi client = retrofit.create(QuizApi.class);
 
     @Override
-    public void getQuestion(int amount, Integer category, String difficulty,final QuestionCallback callback) {
-        Call<QuestionResponse> call = client.getQuestion(10,
-                2,"multiple",
-                "easy");
+    public void getQuestion(int amount, Integer category, String difficulty, final QuestionCallback callback) {
+        Call<QuestionResponse> call = client.getQuestion(amount,
+                category, difficulty);
 
         call.enqueue(new Callback<QuestionResponse>() {
             @Override
@@ -35,6 +34,7 @@ public class QuizApiClient implements IQuizApiClient {
                     callback.onFailure(new Exception("Response error" + response.code()));
                 }
             }
+
             @Override
             public void onFailure(Call<QuestionResponse> call, Throwable t) {
                 callback.onFailure(new Exception(t));
@@ -48,7 +48,6 @@ public class QuizApiClient implements IQuizApiClient {
         Call<QuestionResponse> getQuestion(
                 @Query("amount") int amount,
                 @Query("category") Integer category,
-                @Query("type") String type,
                 @Query("difficulty") String difficulty
         );
     }

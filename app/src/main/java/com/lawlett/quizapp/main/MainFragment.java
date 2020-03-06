@@ -64,7 +64,9 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.main_start_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), QuizActivity.class));
+                QuizActivity.start(getActivity(),seekBar.getProgress(),
+                        spinnercat.getSelectedItemPosition()+8,
+                        spinnerdif.getSelectedItem().toString());
             }
         });
         seekBar.setOnSeekBarChangeListener(new SimpleOnSeekBarChangeListener() {
@@ -123,10 +125,10 @@ public class MainFragment extends Fragment {
 
     public void addDifficultyInSpinner() {
         ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("Any Difficulty");
-        arrayList.add("Easy");
-        arrayList.add("Medium");
-        arrayList.add("Hard");
+        arrayList.add("any difficulty");
+        arrayList.add("easy");
+        arrayList.add("medium");
+        arrayList.add("hard");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, arrayList);
