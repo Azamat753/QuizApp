@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.lawlett.quizapp.history.HistoryFragment;
-import com.lawlett.quizapp.main.MainFragment;
 import com.lawlett.quizapp.settings.SettingsFragment;
 
 public class PagerAdapter extends FragmentPagerAdapter {
@@ -27,7 +26,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
             case 1:
                 fragment = new HistoryFragment();
                 break;
-            
             case 2:
                 fragment = new SettingsFragment();
                 break;

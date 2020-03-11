@@ -78,6 +78,7 @@
     <Spinner
         android:id="@+id/spinner_category"
         android:layout_width="@dimen/width_seekbar"
+        android:entries="@array/categories_list"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_q_amount"
         android:layout_marginEnd="@dimen/right_margin_seekBar"
@@ -96,6 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner_category" />
 
     <Spinner
+        android:entries="@array/difficulty_list"
         android:id="@+id/spinner_difficulty"
         android:layout_width="@dimen/width_seekbar"
         android:layout_height="wrap_content"
@@ -111,6 +113,7 @@
         android:layout_height="60dp"
         android:background="@drawable/start_btn_background"
         android:text="@string/start"
+        android:layout_marginEnd="10dp"
         android:textColor="@android:color/white"
         android:textSize="@dimen/tx_size_btn"
         app:layout_constraintBottom_toBottomOf="parent"

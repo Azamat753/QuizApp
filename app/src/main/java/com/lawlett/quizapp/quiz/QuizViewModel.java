@@ -19,7 +19,6 @@ public class QuizViewModel extends ViewModel {
         new QuizApiClient().getQuestion(amount, category, difficulty, new IQuizApiClient.QuestionCallback() {
             @Override
             public void onSuccess(List<Question> questions) {
-                Log.e("ololo", "onSuccess: ");
                 dataWithRetrofit.setValue(questions);
             }
 

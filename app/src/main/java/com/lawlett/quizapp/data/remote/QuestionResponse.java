@@ -6,10 +6,10 @@ import com.lawlett.quizapp.data.model.Question;
 import java.util.List;
 
 public class QuestionResponse {
-@SerializedName("response_code")
+    @SerializedName("response_code")
     private int responseCode;
 
-private List<Question>results;
+    private List<Question> results;
 
     public QuestionResponse(int responseCode, List<Question> results) {
         this.responseCode = responseCode;

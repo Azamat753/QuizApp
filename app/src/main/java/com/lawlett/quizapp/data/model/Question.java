@@ -19,6 +19,12 @@ public class Question {
     @SerializedName("incorrect_answers")
     private List<String> incorrectAnswer;
 
+    private String selectedAnswer;
+
+    private List<String>answers;
+
+    private Integer selectedAnswersPosition ;
+
     public Question(String category, String type, String difficulty, String question, String correctAnswer, List<String> incorrectAnswer) {
         this.category = category;
         this.type = type;
@@ -26,6 +32,30 @@ public class Question {
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswer = incorrectAnswer;
+    }
+
+    public Integer getSelectedAnswersPosition() {
+        return selectedAnswersPosition;
+    }
+
+    public void setSelectedAnswersPosition(Integer selectedAnswersPosition) {
+        this.selectedAnswersPosition = selectedAnswersPosition;
+    }
+
+    public String getSelectedAnswer() {
+        return selectedAnswer;
+    }
+
+    public void setSelectedAnswer(String selectedAnswer) {
+        this.selectedAnswer = selectedAnswer;
+    }
+
+    public List<String> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<String> answers) {
+        this.answers = answers;
     }
 
     public String getCategory() {

@@ -18,6 +18,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     public HistoryAdapter() {
         list = new ArrayList<>();
+        notifyDataSetChanged();
+
     }
 
     @NonNull
@@ -49,10 +51,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         }
 
         public void bind(String s) {
-            category_tv.setText(s);
-            correct_answer_tv.setText(s);
-            difficulty_tv.setText(s);
-            data_tv.setText(s);
+            category_tv.setText("Mixed");
+            correct_answer_tv.setText("Correct answers 8/10");
+            difficulty_tv.setText("Difficulty:Easy");
+            data_tv.setText("12 may 2019 20:32");
         }
     }
 }

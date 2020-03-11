@@ -7,7 +7,6 @@ import com.lawlett.quizapp.data.model.Question;
 import java.util.List;
 
 public interface IQuizApiClient {
-   // int amount, Integer category, String difficulty,
     void getQuestion( int amount,Integer category,String difficulty,QuestionCallback callback);
 
     interface QuestionCallback{

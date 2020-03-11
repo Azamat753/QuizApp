@@ -6,8 +6,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.data.model.Question;
 
@@ -43,15 +45,11 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         return list.size();
     }
 
-//    public void setQuestion(Question question) {
-//        list.add(question);
-//        notifyDataSetChanged();
-//    }
 
     public class QuizViewHolder extends RecyclerView.ViewHolder {
         TextView question_tv;
         Button one_type_btn, two_type_btn, first_btn, second_btn, third_btn, four_btn;
-        LinearLayout mult_cont,boolean_cont;
+        LinearLayout mult_cont, boolean_cont;
 
         public QuizViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,12 +66,12 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
         public void bind(Question question) {
             question_tv.setText(question.getQuestion());
-            if (question.getType() == "boolean"){
+            if (question.getType() == "boolean") {
                 mult_cont.setVisibility(View.GONE);
                 boolean_cont.setVisibility(View.VISIBLE);
                 one_type_btn.setText(question.getCorrectAnswer());
                 two_type_btn.setText(question.getCorrectAnswer());
-            }else{
+            } else {
                 mult_cont.setVisibility(View.VISIBLE);
                 boolean_cont.setVisibility(View.GONE);
                 first_btn.setText(question.getIncorrectAnswer().get(0));
@@ -81,9 +79,6 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                 third_btn.setText(question.getIncorrectAnswer().get(2));
                 four_btn.setText(question.getCorrectAnswer());
             }
-
-
-
         }
     }
 }

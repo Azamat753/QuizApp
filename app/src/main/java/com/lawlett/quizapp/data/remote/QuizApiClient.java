@@ -50,5 +50,10 @@ public class QuizApiClient implements IQuizApiClient {
                 @Query("category") Integer category,
                 @Query("difficulty") String difficulty
         );
+        @GET("api_count_global.php")
+        Call<QuestionResponse> getCountGlobal();
+
+        @GET("api_count.php?category")
+        Call<QuestionResponse> getCategory ();
     }
 }
