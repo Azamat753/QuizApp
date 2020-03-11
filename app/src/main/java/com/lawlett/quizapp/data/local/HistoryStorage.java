@@ -12,10 +12,12 @@ public class HistoryStorage {
     void saveQuizResult(QuizResult quizResult) {
         mHistoryDao.insert(quizResult);
     }
-    void deleteQuizResult(QuizResult quizResult){
+
+    void deleteQuizResult(QuizResult quizResult) {
         mHistoryDao.delete(quizResult);
     }
-    void deleteAllQuizResult(QuizResult quizResult){
+
+    void deleteAllQuizResult(QuizResult quizResult) {
         mHistoryDao.deleteAll(quizResult);
     }
 }
