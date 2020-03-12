@@ -1,11 +1,8 @@
 package com.lawlett.quizapp.data.remote;
 
 import com.lawlett.quizapp.data.model.GlobalResponse;
-import com.lawlett.quizapp.data.model.QuestionCount;
 import com.lawlett.quizapp.data.model.QuizQuestionCount;
 import com.lawlett.quizapp.data.model.TriviaCategories;
-
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;

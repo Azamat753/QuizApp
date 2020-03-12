@@ -11,7 +11,7 @@ import com.lawlett.quizapp.data.model.TriviaCategories;
 
 import java.util.List;
 
-public interface IQuizApiClient {
+public  interface IQuizApiClient {
     void getQuestion(int amount, Integer category, String difficulty, QuestionCallback callback);
 
     void getGlobal(GlobalCallback globalCallback);

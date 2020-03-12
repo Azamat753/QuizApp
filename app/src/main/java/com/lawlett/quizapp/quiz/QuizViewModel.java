@@ -23,7 +23,7 @@ public class QuizViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Exception e) {
+            public void onFailure(Throwable t) {
 
             }
         });
