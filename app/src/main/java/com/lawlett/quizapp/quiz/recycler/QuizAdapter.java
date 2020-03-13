@@ -66,11 +66,11 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
         public void bind(Question question) {
             question_tv.setText(question.getQuestion());
-            if (question.getType() == "boolean") {
+            if (question.getType().equals("boolean")) {
                 mult_cont.setVisibility(View.GONE);
                 boolean_cont.setVisibility(View.VISIBLE);
                 one_type_btn.setText(question.getCorrectAnswer());
-                two_type_btn.setText(question.getCorrectAnswer());
+                two_type_btn.setText(question.getIncorrectAnswer().get(0));
             } else {
                 mult_cont.setVisibility(View.VISIBLE);
                 boolean_cont.setVisibility(View.GONE);

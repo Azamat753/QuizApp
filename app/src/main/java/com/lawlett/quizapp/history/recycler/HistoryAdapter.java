@@ -6,16 +6,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lawlett.quizapp.R;
+import com.lawlett.quizapp.data.model.QuizResult;
 
 import java.util.ArrayList;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
-    ArrayList<String> list;
-
+    ArrayList<QuizResult> list;
     public HistoryAdapter() {
         list = new ArrayList<>();
         notifyDataSetChanged();
@@ -50,11 +49,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             data_tv = itemView.findViewById(R.id.data_item);
         }
 
-        public void bind(String s) {
-            category_tv.setText("Mixed");
-            correct_answer_tv.setText("Correct answers 8/10");
-            difficulty_tv.setText("Difficulty:Easy");
-            data_tv.setText("12 may 2019 20:32");
+        public void bind(QuizResult quizResult) {
+            category_tv.setText(quizResult.getCategory());
+            correct_answer_tv.setText(quizResult.getCorrectAnswersAmount());
+            difficulty_tv.setText(quizResult.getDifficulty());
+            data_tv.setText(quizResult.getCreateAt().toString());
         }
     }
 }

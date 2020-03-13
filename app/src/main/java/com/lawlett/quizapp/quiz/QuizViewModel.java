@@ -15,7 +15,7 @@ public class QuizViewModel extends ViewModel {
 
     public MutableLiveData<List<Question>> dataWithRetrofit = new MutableLiveData<>();
 
-    void QueryOnData(int amount,Integer category,String difficulty) {
+    void queryOnData(int amount, Integer category, String difficulty) {
         new QuizApiClient().getQuestion(amount, category, difficulty, new IQuizApiClient.QuestionCallback() {
             @Override
             public void onSuccess(List<Question> questions) {

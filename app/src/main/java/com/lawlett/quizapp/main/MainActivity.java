@@ -1,25 +1,15 @@
-package com.lawlett.quizapp;
+package com.lawlett.quizapp.main;
+
+import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.lawlett.quizapp.data.model.Question;
-import com.lawlett.quizapp.data.remote.IQuizApiClient;
-import com.lawlett.quizapp.data.remote.QuizApiClient;
-import com.lawlett.quizapp.main.MainViewModel;
-import com.lawlett.quizapp.main.PagerAdapter;
-
-import java.util.List;
+import com.lawlett.quizapp.R;
 
 public class MainActivity extends AppCompatActivity  {
 

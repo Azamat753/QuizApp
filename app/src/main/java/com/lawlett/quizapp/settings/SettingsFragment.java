@@ -9,21 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lawlett.quizapp.R;
+import com.lawlett.quizapp.core.CoreFragment;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends CoreFragment {
 
     public SettingsFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+    public int getLayoutId() {
+        return R.layout.fragment_settings;
     }
 }

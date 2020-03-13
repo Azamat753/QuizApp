@@ -17,6 +17,10 @@ import com.lawlett.quizapp.quiz.recycler.QuizAdapter;
 import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
+    public static final String AMOUNT_EXTRA="amount";
+    public static final String CATEGORY_EXTRA="category";
+    public static final String DIFFICULTY_EXTRA="difficulty";
+
     private QuizViewModel quizViewModel;
     RecyclerView recyclerView;
     QuizAdapter adapter;
@@ -38,7 +42,7 @@ public class QuizActivity extends AppCompatActivity {
                 .get(QuizViewModel.class);
         if (category == 8) category = null;
         if (difficulty.equals("all")) difficulty = null;
-        quizViewModel.QueryOnData(amount, category, difficulty);
+        quizViewModel.queryOnData(amount, category, difficulty);
 
         quizViewModel.dataWithRetrofit.observe(this, new Observer<List<Question>>() {
             @Override
@@ -49,8 +53,8 @@ public class QuizActivity extends AppCompatActivity {
     }
     public static void start(Context context, int amount, Integer category, String difficulty) {
         context.startActivity(new Intent(context, QuizActivity.class)
-                .putExtra("amount", amount)
-                .putExtra("category", category)
-                .putExtra("difficulty", difficulty));
+                .putExtra(AMOUNT_EXTRA, amount)
+                .putExtra(CATEGORY_EXTRA, category)
+                .putExtra(DIFFICULTY_EXTRA, difficulty));
     }
 }

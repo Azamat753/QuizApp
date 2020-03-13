@@ -18,13 +18,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.lawlett.quizapp.core.CoreFragment;
 import com.lawlett.quizapp.quiz.QuizActivity;
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.utils.SimpleOnSeekBarChangeListener;
 
 import java.util.ArrayList;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends CoreFragment {
     private TextView seekBar_amount;
     private MainViewModel mViewModel;
     SeekBar seekBar;
@@ -36,10 +37,8 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.fragment_main, container, false);
+    public int getLayoutId() {
+        return R.layout.fragment_main;
     }
 
     @Override
