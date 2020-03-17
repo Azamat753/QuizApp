@@ -16,7 +16,7 @@
     <string name="settings">Settings</string>
 
     <string-array name="categories_list">
-        <item>all</item>
+        <item>Any Category</item>
         <item>General Knowledge</item>
         <item>Entertainment: Books</item>
         <item>Entertainment: Film</item>
@@ -44,10 +44,10 @@
     </string-array>
 
     <string-array name="difficulty_list">
-        <item>all</item>
-        <item>easy</item>
-        <item>medium</item>
-        <item>hard</item>
+        <item>Any Difficulty</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
     </string-array>
 
 </resources>

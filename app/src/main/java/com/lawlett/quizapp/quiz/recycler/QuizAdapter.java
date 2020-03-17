@@ -1,5 +1,6 @@
 package com.lawlett.quizapp.quiz.recycler;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
     List<Question> list;
+    Listener listener;
 
     public QuizAdapter() {
         list = new ArrayList<>();
@@ -62,6 +64,13 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             four_btn = itemView.findViewById(R.id.four_btn);
             mult_cont = itemView.findViewById(R.id.multiple_question_linear);
             boolean_cont = itemView.findViewById(R.id.type_question_linear);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onAnswerClick(getAdapterPosition());
+                }
+            });
         }
 
         public void bind(Question question) {

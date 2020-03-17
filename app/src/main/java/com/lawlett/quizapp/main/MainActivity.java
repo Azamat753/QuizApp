@@ -1,6 +1,7 @@
 package com.lawlett.quizapp.main;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -9,7 +10,12 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.lawlett.quizapp.App;
 import com.lawlett.quizapp.R;
+import com.lawlett.quizapp.data.model.Question;
+import com.lawlett.quizapp.data.remote.IQuizApiClient;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -21,6 +27,19 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+     App.quizRepository.getQuestion(new IQuizApiClient.QuestionCallback() {
+         @Override
+         public void onSuccess(List<Question> questions) {
+             for (Question question:questions){
+                 Log.d("ololo",question.getQuestion()+""+question.getType());
+             }
+         }
+
+         @Override
+         public void onFailure(Throwable t) {
+
+         }
+     });
         mViewModel = ViewModelProviders
                 .of(this)
                 .get(MainViewModel.class);

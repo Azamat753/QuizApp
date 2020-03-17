@@ -9,6 +9,7 @@
 
     <TextView
         android:id="@+id/title"
+        android:background="@drawable/custom_ripple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/settings"
@@ -19,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
+        android:background="@drawable/custom_ripple"
         android:id="@+id/f_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,11 +30,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_ripple"
             android:drawableEnd="@drawable/ic_right"
             android:paddingEnd="10dp"
             android:text="Share this app"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <View
             android:layout_width="match_parent"
@@ -44,43 +47,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
+            android:background="@drawable/custom_ripple"
             android:drawableEnd="@drawable/ic_right"
             android:paddingEnd="10dp"
             android:text="Rate us"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginTop="170dp"
-            android:background="@android:color/darker_gray"  />
+            android:background="@android:color/darker_gray" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
+            android:background="@drawable/custom_ripple"
             android:drawableEnd="@drawable/ic_right"
             android:paddingEnd="10dp"
             android:text="Leave feedback"
             android:textColor="@android:color/black"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginTop="270dp"
-            android:background="@android:color/darker_gray"  />
+            android:background="@android:color/darker_gray" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="300dp"
+            android:background="@drawable/custom_ripple"
             android:drawableEnd="@drawable/ic_right"
             android:paddingEnd="10dp"
             android:text="Clear history"
             android:textColor="@android:color/holo_purple"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
     </androidx.cardview.widget.CardView>
 

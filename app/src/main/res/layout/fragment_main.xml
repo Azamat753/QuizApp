@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/title"
-        style="@style/title_s"
+        style="@style/main_fr_title_s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
@@ -18,7 +18,7 @@
 
     <ImageView
         android:id="@+id/main_image"
-        style="@style/image_view_s"
+        style="@style/main_fr_image_view_s"
         android:src="@drawable/illustration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/q_amount"
-        style="@style/q_amount_s"
+        style="@style/main_fr_q_amount_s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/q_amount_number"
-        style="@style/q_amount_number_s"
+        style="@style/main_fr_q_amount_number_s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,7 @@
 
     <SeekBar
         android:id="@+id/main_seekBar"
-        style="@style/seekbar_main_s"
+        style="@style/main_fr_seekbar_main_s"
         android:layout_height="wrap_content"
         android:max="50"
         android:min="5"
@@ -56,7 +56,7 @@
 
     <TextView
         android:id="@+id/hint_category"
-        style="@style/hint_category"
+        style="@style/main_fr_hint_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
 
     <Spinner
         android:id="@+id/spinner_category"
-        style="@style/spinner"
+        style="@style/main_fr_spinner"
         android:layout_height="wrap_content"
         android:entries="@array/categories_list"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
 
     <TextView
         android:id="@+id/hint_difficulty"
-        style="@style/hint_diff_s"
+        style="@style/main_fr_hint_diff_s"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
 
     <Spinner
         android:id="@+id/spinner_difficulty"
-        style="@style/spinner"
+        style="@style/main_fr_spinner"
         android:layout_height="wrap_content"
         android:entries="@array/difficulty_list"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,7 +90,7 @@
 
     <Button
         android:id="@+id/main_start_btn"
-        style="@style/btn_start_s"
+        style="@style/main_fr_btn_start_s"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

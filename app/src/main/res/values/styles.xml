@@ -9,57 +9,57 @@
         <item name="android:statusBarColor" tools:ignore="NewApi">#FFFFFF</item>
     </style>
 
-    <style name="title_s">
+    <style name="main_fr_title_s">
         <item name="android:text">@string/quiz</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">@dimen/title_size</item>
     </style>
 
-    <style name="image_view_s">
+    <style name="main_fr_image_view_s">
         <item name="android:layout_width">@dimen/main_image_width</item>
         <item name="android:layout_height">@dimen/main_image_height</item>
         <item name="android:layout_marginTop">@dimen/top_margin_from_title</item>
         <item name="android:src">@drawable/illustration</item>
     </style>
 
-    <style name="q_amount_s">
+    <style name="main_fr_q_amount_s">
         <item name="android:hint">@string/question_amount</item>
         <item name="android:layout_marginEnd">@dimen/right_margin_q_amount</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
     </style>
 
-    <style name="q_amount_number_s">
+    <style name="main_fr_q_amount_number_s">
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:layout_marginEnd">@dimen/right_margin_amount_number</item>
         <item name="android:text">@string/_5</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="seekbar_main_s">
+    <style name="main_fr_seekbar_main_s">
         <item name="android:layout_width">@dimen/width_seekbar</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:layout_marginEnd">@dimen/right_margin_seekBar</item>
     </style>
 
-    <style name="hint_category">
+    <style name="main_fr_hint_category">
         <item name="android:layout_marginStart">@dimen/left_margin_hint_category</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:hint">@string/category</item>
     </style>
 
-    <style name="spinner">
+    <style name="main_fr_spinner">
         <item name="android:layout_width">@dimen/width_seekbar</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:layout_marginEnd">@dimen/right_margin_seekBar</item>
     </style>
 
-    <style name="hint_diff_s">
+    <style name="main_fr_hint_diff_s">
         <item name="android:layout_marginStart">@dimen/left_margin_hint_category</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:hint">@string/difficulty</item>
     </style>
 
-    <style name="btn_start_s">
+    <style name="main_fr_btn_start_s">
         <item name="android:layout_width">@dimen/btn_width</item>
         <item name="android:layout_height">@dimen/btn_height</item>
         <item name="android:background">@drawable/start_btn_background</item>

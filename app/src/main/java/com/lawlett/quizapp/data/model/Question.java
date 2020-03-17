@@ -7,7 +7,7 @@ import java.util.List;
 public class Question {
     private String category;
 
-    private String type;
+    private EType type;
 
     private String difficulty;
 
@@ -25,14 +25,19 @@ public class Question {
 
     private Integer selectedAnswersPosition ;
 
-    public Question(String category, String type, String difficulty, String question, String correctAnswer, List<String> incorrectAnswer) {
+
+    public Question(String category, EType type, String difficulty, String question, String correctAnswer, List<String> incorrectAnswer, String selectedAnswer, List<String> answers, Integer selectedAnswersPosition) {
         this.category = category;
         this.type = type;
         this.difficulty = difficulty;
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswer = incorrectAnswer;
+        this.selectedAnswer = selectedAnswer;
+        this.answers = answers;
+        this.selectedAnswersPosition = selectedAnswersPosition;
     }
+
 
     public Integer getSelectedAnswersPosition() {
         return selectedAnswersPosition;
@@ -66,11 +71,11 @@ public class Question {
         this.category = category;
     }
 
-    public String getType() {
+    public EType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(EType type) {
         this.type = type;
     }
 

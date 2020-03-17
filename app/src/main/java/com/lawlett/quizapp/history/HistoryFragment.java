@@ -8,13 +8,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.core.CoreFragment;
+import com.lawlett.quizapp.data.model.History;
 import com.lawlett.quizapp.history.recycler.HistoryAdapter;
+
+import java.util.Date;
 
 
 /**
@@ -27,7 +31,6 @@ HistoryAdapter adapter;
     public HistoryFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public int getLayoutId() {
@@ -42,5 +45,7 @@ HistoryAdapter adapter;
         adapter = new HistoryAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+
+
     }
 }

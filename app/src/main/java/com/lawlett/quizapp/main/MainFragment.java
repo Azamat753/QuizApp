@@ -61,8 +61,9 @@ public class MainFragment extends CoreFragment {
             @Override
             public void onClick(View v) {
                 QuizActivity.start(getActivity(),seekBar.getProgress(),
+
                         spinnercat.getSelectedItemPosition()+8,
-                        spinnerdif.getSelectedItem().toString());
+                        spinnerdif.getSelectedItem().toString().toLowerCase());
             }
         });
         seekBar.setOnSeekBarChangeListener(new SimpleOnSeekBarChangeListener() {
@@ -74,3 +75,10 @@ public class MainFragment extends CoreFragment {
         });
     }
 }
+
+
+/*todo
+  Integer categoryId= null;         если категория null то запрос на any иначе (+8)
+ if (categorySpinner.getSelectedIndex()=! 0) {
+categoryId= categorySpinner.getSelectedIndex()+8;
+*/
