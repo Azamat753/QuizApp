@@ -1,7 +1,6 @@
 package com.lawlett.quizapp.data.local;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Query;
 
 import com.lawlett.quizapp.data.model.QuizResult;
 
@@ -18,7 +17,7 @@ public class HistoryStorage {
         mHistoryDao.insert(quizResult);
     }
 
-    void deleteQuizResult(int id) {
+    void deleteQuizResultByID(int id) {
         mHistoryDao.deleteById(id);
     }
 

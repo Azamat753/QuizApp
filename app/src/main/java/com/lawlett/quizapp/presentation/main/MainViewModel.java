@@ -1,6 +1,4 @@
-package com.lawlett.quizapp.main;
-
-import android.widget.ArrayAdapter;
+package com.lawlett.quizapp.presentation.main;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

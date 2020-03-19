@@ -1,29 +1,19 @@
-package com.lawlett.quizapp.main;
+package com.lawlett.quizapp.presentation.main;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.lawlett.quizapp.core.CoreFragment;
-import com.lawlett.quizapp.quiz.QuizActivity;
+import com.lawlett.quizapp.presentation.quiz.QuizActivity;
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.utils.SimpleOnSeekBarChangeListener;
-
-import java.util.ArrayList;
 
 public class MainFragment extends CoreFragment {
     private TextView seekBar_amount;
@@ -61,11 +51,13 @@ public class MainFragment extends CoreFragment {
             @Override
             public void onClick(View v) {
                 QuizActivity.start(getActivity(),seekBar.getProgress(),
-
                         spinnercat.getSelectedItemPosition()+8,
                         spinnerdif.getSelectedItem().toString().toLowerCase());
             }
         });
+
+
+
         seekBar.setOnSeekBarChangeListener(new SimpleOnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -74,6 +66,12 @@ public class MainFragment extends CoreFragment {
             }
         });
     }
+//    public void onStartClick(){
+//Integer categoryId = null;
+//if (spinnercat.getSelectedItemId()!=0){
+//categoryId= spinnercat
+//}
+//    }
 }
 
 

@@ -1,4 +1,4 @@
-package com.lawlett.quizapp.main;
+package com.lawlett.quizapp.presentation.main;
 
 import android.os.Bundle;
 import android.util.Log;

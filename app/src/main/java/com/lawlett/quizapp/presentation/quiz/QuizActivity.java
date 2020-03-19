@@ -1,9 +1,11 @@
-package com.lawlett.quizapp.quiz;
+package com.lawlett.quizapp.presentation.quiz;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -11,9 +13,10 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.data.model.Question;
-import com.lawlett.quizapp.quiz.recycler.QuizAdapter;
+import com.lawlett.quizapp.presentation.quiz.recycler.QuizAdapter;
 
 import java.util.List;
 
@@ -21,14 +24,19 @@ public class QuizActivity extends AppCompatActivity {
     public static final String EXTRA_AMOUNT = "amount";
     public static final String EXTRA_CATEGORY = "category";
     public static final String EXTRA_DIFFICULTY = "difficulty";
-
+    LinearLayout quizLinear;
+    LottieAnimationView loading;
     private QuizViewModel quizViewModel;
     RecyclerView recyclerView;
     QuizAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        loading=findViewById(R.id.loading_lottie);
+
+        quizLinear = findViewById(R.id.quiz_linear);
         recyclerView = findViewById(R.id.quiz_recycler);
         adapter = new QuizAdapter();
         recyclerView.setAdapter(adapter);
@@ -54,13 +62,15 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onChanged(Boolean isLoading) {
                 if (isLoading) {
-                    //TODO: Hide views and show loading
+                    quizLinear.setVisibility(View.GONE);
+                    loading.setVisibility(View.VISIBLE);
                 } else {
-                    //TODO: Show views
+                    loading.setVisibility(View.GONE);
+                    quizLinear.setVisibility(View.VISIBLE);
                 }
             }
         });
-        quizViewModel.init(10,1,"easy");
+        quizViewModel.init(10, 1, "easy");
     }
 
     public static void start(Context context, int amount, Integer category, String difficulty) {

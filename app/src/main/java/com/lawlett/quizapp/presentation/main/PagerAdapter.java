@@ -1,13 +1,13 @@
 
-package com.lawlett.quizapp.main;
+package com.lawlett.quizapp.presentation.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.lawlett.quizapp.history.HistoryFragment;
-import com.lawlett.quizapp.settings.SettingsFragment;
+import com.lawlett.quizapp.presentation.history.HistoryFragment;
+import com.lawlett.quizapp.presentation.settings.SettingsFragment;
 
 public class PagerAdapter extends FragmentPagerAdapter {
 

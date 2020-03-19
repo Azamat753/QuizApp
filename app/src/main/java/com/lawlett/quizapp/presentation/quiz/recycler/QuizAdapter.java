@@ -1,6 +1,5 @@
-package com.lawlett.quizapp.quiz.recycler;
+package com.lawlett.quizapp.presentation.quiz.recycler;
 
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

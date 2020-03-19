@@ -9,57 +9,57 @@
         <item name="android:statusBarColor" tools:ignore="NewApi">#FFFFFF</item>
     </style>
 
-    <style name="main_fr_title_s">
+    <style name="MainFrTitle">
         <item name="android:text">@string/quiz</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">@dimen/title_size</item>
     </style>
 
-    <style name="main_fr_image_view_s">
+    <style name="MainFrImageView">
         <item name="android:layout_width">@dimen/main_image_width</item>
         <item name="android:layout_height">@dimen/main_image_height</item>
         <item name="android:layout_marginTop">@dimen/top_margin_from_title</item>
         <item name="android:src">@drawable/illustration</item>
     </style>
 
-    <style name="main_fr_q_amount_s">
+    <style name="MainFrQAmount">
         <item name="android:hint">@string/question_amount</item>
         <item name="android:layout_marginEnd">@dimen/right_margin_q_amount</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
     </style>
 
-    <style name="main_fr_q_amount_number_s">
+    <style name="MainFrQAmountNumber">
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:layout_marginEnd">@dimen/right_margin_amount_number</item>
         <item name="android:text">@string/_5</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
-    <style name="main_fr_seekbar_main_s">
+    <style name="MainFrSeekbarMain">
         <item name="android:layout_width">@dimen/width_seekbar</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:layout_marginEnd">@dimen/right_margin_seekBar</item>
     </style>
 
-    <style name="main_fr_hint_category">
+    <style name="MainFrHintCategory">
         <item name="android:layout_marginStart">@dimen/left_margin_hint_category</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:hint">@string/category</item>
     </style>
 
-    <style name="main_fr_spinner">
+    <style name="MainFrSpinner">
         <item name="android:layout_width">@dimen/width_seekbar</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:layout_marginEnd">@dimen/right_margin_seekBar</item>
     </style>
 
-    <style name="main_fr_hint_diff_s">
+    <style name="MainFrHintDiff">
         <item name="android:layout_marginStart">@dimen/left_margin_hint_category</item>
         <item name="android:layout_marginTop">@dimen/margin_q_amount</item>
         <item name="android:hint">@string/difficulty</item>
     </style>
 
-    <style name="main_fr_btn_start_s">
+    <style name="MainFrBtnStart">
         <item name="android:layout_width">@dimen/btn_width</item>
         <item name="android:layout_height">@dimen/btn_height</item>
         <item name="android:background">@drawable/start_btn_background</item>
@@ -68,4 +68,42 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/tx_size_btn</item>
     </style>
+
+    <style name="TitleSettings">
+        <item name="android:text">@string/settings</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/title_size</item>
+    </style>
+
+    <style name="ShareSettings">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">80dp</item>
+        <item name="paddingEnd">10dp</item>
+        <item name="android:text">Share this app</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="BlackLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
+
+    <style name="RateUs">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="ClearHistory">
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@android:color/holo_purple</item>
+    </style>
+
 </resources>

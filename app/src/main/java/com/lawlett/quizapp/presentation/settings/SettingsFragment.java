@@ -1,12 +1,6 @@
-package com.lawlett.quizapp.settings;
-
-import android.os.Bundle;
+package com.lawlett.quizapp.presentation.settings;
 
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.core.CoreFragment;

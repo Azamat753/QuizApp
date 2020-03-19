@@ -1,4 +1,4 @@
-package com.lawlett.quizapp.quiz;
+package com.lawlett.quizapp.presentation.quiz;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

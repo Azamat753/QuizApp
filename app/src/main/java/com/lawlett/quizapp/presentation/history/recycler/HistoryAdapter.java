@@ -1,4 +1,4 @@
-package com.lawlett.quizapp.history.recycler;
+package com.lawlett.quizapp.presentation.history.recycler;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.data.model.History;
-import com.lawlett.quizapp.data.model.QuizResult;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
-    ArrayList<History> list;
+    List<History> list;
+
     public HistoryAdapter() {
         list = new ArrayList<>();
         notifyDataSetChanged();
@@ -39,6 +40,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         return list.size();
     }
 
+    public void update(List<History> history) {
+        this.list = history;
+        notifyDataSetChanged();
+    }
+
     public class HistoryViewHolder extends RecyclerView.ViewHolder {
         TextView category_tv, correct_answer_tv, difficulty_tv, data_tv;
 
@@ -50,11 +56,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             difficulty_tv = itemView.findViewById(R.id.difficult_tv_h);
             data_tv = itemView.findViewById(R.id.data_item);
         }
+
         public void bind(History history) {
-           category_tv.setText(history.getCategory());
-           correct_answer_tv.setText(history.getCorrectAnswers());
-           difficulty_tv.setText(history.getDifficulty());
-           data_tv.setText(history.getCreateAt().toString());
+//            category_tv.setText(history.getCategory());
+//            correct_answer_tv.setText(history.getCorrectAnswers());
+//            difficulty_tv.setText(history.getDifficulty());
+//            data_tv.setText(history.getCreateAt().toString());
         }
     }
 }
