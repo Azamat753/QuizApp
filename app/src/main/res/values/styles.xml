@@ -106,4 +106,12 @@
         <item name="android:textColor">@android:color/holo_purple</item>
     </style>
 
+    <style name="MultipleBtn">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:hint">colombo</item>
+        <item name="android:textSize">25sp</item>
+    </style>
 </resources>

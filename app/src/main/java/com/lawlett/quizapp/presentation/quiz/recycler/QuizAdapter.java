@@ -1,5 +1,6 @@
 package com.lawlett.quizapp.presentation.quiz.recycler;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,14 +50,14 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
     public class QuizViewHolder extends RecyclerView.ViewHolder {
         TextView question_tv;
-        Button one_type_btn, two_type_btn, first_btn, second_btn, third_btn, four_btn;
+        Button first_boolean_btn, second_boolean_btn, first_btn, second_btn, third_btn, four_btn;
         LinearLayout mult_cont, boolean_cont;
 
         public QuizViewHolder(@NonNull View itemView) {
             super(itemView);
             question_tv = itemView.findViewById(R.id.question_tv);
-            one_type_btn = itemView.findViewById(R.id.btn_one_type);
-            two_type_btn = itemView.findViewById(R.id.btn_two_type);
+            first_boolean_btn = itemView.findViewById(R.id.btn_one_type);
+            second_boolean_btn = itemView.findViewById(R.id.btn_two_type);
             first_btn = itemView.findViewById(R.id.first_btn);
             second_btn = itemView.findViewById(R.id.second_btn);
             third_btn = itemView.findViewById(R.id.third_btn);
@@ -64,28 +65,58 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             mult_cont = itemView.findViewById(R.id.multiple_question_linear);
             boolean_cont = itemView.findViewById(R.id.type_question_linear);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            first_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onAnswerClick(getAdapterPosition());
+                    listener.onAnswerClick(getAdapterPosition(), 0);
+                }
+            });
+            second_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onAnswerClick(getAdapterPosition(), 1);
+                }
+            });
+            third_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onAnswerClick(getAdapterPosition(), 2);
+                }
+            });
+            four_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onAnswerClick(getAdapterPosition(),3);
+                }
+            });
+            first_boolean_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onAnswerClick(getAdapterPosition(),0);
+                }
+            });
+            second_boolean_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onAnswerClick(getAdapterPosition(),1);
                 }
             });
         }
 
         public void bind(Question question) {
-            question_tv.setText(question.getQuestion());
+            question_tv.setText(Html.fromHtml(question.getQuestion()));
             if (question.getType().equals("boolean")) {
                 mult_cont.setVisibility(View.GONE);
                 boolean_cont.setVisibility(View.VISIBLE);
-                one_type_btn.setText(question.getCorrectAnswer());
-                two_type_btn.setText(question.getIncorrectAnswer().get(0));
+                first_boolean_btn.setText(Html.fromHtml(question.getCorrectAnswer()));
+                second_boolean_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)));
             } else {
                 mult_cont.setVisibility(View.VISIBLE);
                 boolean_cont.setVisibility(View.GONE);
-                first_btn.setText(question.getIncorrectAnswer().get(0));
-                second_btn.setText(question.getIncorrectAnswer().get(1));
-                third_btn.setText(question.getIncorrectAnswer().get(2));
-                four_btn.setText(question.getCorrectAnswer());
+                first_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)));
+                second_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(1)));
+                third_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(2)));
+                four_btn.setText(Html.fromHtml(question.getCorrectAnswer()));
             }
         }
     }

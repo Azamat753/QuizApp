@@ -30,11 +30,12 @@ public class QuizActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     QuizAdapter adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        loading=findViewById(R.id.loading_lottie);
+        loading = findViewById(R.id.loading_lottie);
 
         quizLinear = findViewById(R.id.quiz_linear);
         recyclerView = findViewById(R.id.quiz_recycler);
@@ -52,7 +53,7 @@ public class QuizActivity extends AppCompatActivity {
         if (difficulty.equals("all")) difficulty = null;
         quizViewModel.queryOnData(amount, category, difficulty);
 
-        quizViewModel.dataWithRetrofit.observe(this, new Observer<List<Question>>() {
+        quizViewModel.dataWithQuestion.observe(this, new Observer<List<Question>>() {
             @Override
             public void onChanged(List<Question> questions) {
                 adapter.updateQuestions(questions);
@@ -71,6 +72,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
         quizViewModel.init(10, 1, "easy");
+
     }
 
     public static void start(Context context, int amount, Integer category, String difficulty) {
@@ -78,5 +80,15 @@ public class QuizActivity extends AppCompatActivity {
                 .putExtra(EXTRA_AMOUNT, amount)
                 .putExtra(EXTRA_CATEGORY, category)
                 .putExtra(EXTRA_DIFFICULTY, difficulty));
+    }
+
+    public void backImageClick(View view) {
+        quizViewModel.onBackPress();
+    }
+
+    @Override
+    public void onBackPressed() {
+       // super.onBackPressed();
+        quizViewModel.onBackPress();
     }
 }

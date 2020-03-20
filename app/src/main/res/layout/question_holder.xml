@@ -14,76 +14,46 @@
         android:textSize="30sp" />
 
 
-<LinearLayout
-    android:id="@+id/multiple_question_linear"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-
-
-
-    <Button
-        android:id="@+id/first_btn"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:id="@+id/multiple_question_linear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:hint="colombo"
-        android:textSize="25sp" />
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/second_btn"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:hint="colombo"
-        android:textSize="25sp" />
-    <Button
-        android:id="@+id/third_btn"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:hint="colombo"
-        android:textSize="25sp" />
+        <Button
+            android:id="@+id/first_btn"
+            style="@style/MultipleBtn" />
 
-    <Button
-        android:id="@+id/four_btn"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:hint="colombo"
-        android:textSize="25sp" />
-</LinearLayout>
+        <Button
+            android:id="@+id/second_btn"
+            style="@style/MultipleBtn" />
+
+        <Button
+            android:id="@+id/third_btn"
+            style="@style/MultipleBtn" />
+
+        <Button
+            android:id="@+id/four_btn"
+            style="@style/MultipleBtn" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/type_question_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
 
         <Button
             android:id="@+id/btn_one_type"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:hint="colombo"
-            android:textSize="25sp" />
+            style="@style/MultipleBtn" />
 
         <Button
             android:id="@+id/btn_two_type"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:hint="colombo"
-            android:textSize="25sp" />
+            style="@style/MultipleBtn" />
 
     </LinearLayout>
 

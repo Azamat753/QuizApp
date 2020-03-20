@@ -25,6 +25,7 @@ public class Question {
 
     private Integer selectedAnswersPosition ;
 
+    private boolean isAnswered;
 
     public Question(String category, EType type, String difficulty, String question, String correctAnswer, List<String> incorrectAnswer, String selectedAnswer, List<String> answers, Integer selectedAnswersPosition) {
         this.category = category;
@@ -38,6 +39,13 @@ public class Question {
         this.selectedAnswersPosition = selectedAnswersPosition;
     }
 
+    public boolean isAnswered() {
+        return isAnswered;
+    }
+
+    public void setAnswered(boolean answered) {
+        isAnswered = answered;
+    }
 
     public Integer getSelectedAnswersPosition() {
         return selectedAnswersPosition;
