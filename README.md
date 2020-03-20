@@ -1,5 +1,5 @@
 # Android 4 QuizApp
-### Project theme:Basic architecture (MVVM & Repository),Retrofit,Room,Recycler,principles SOLID,DRY,YAGNI,KISS.
+### Project theme:Basic architecture (MVVM & Repository) Design with use styles,Retrofit,Room,Recycler,principles SOLID,DRY,YAGNI,KISS.
 
 #### Ссылка на документацию по API - [Trivia API docs](https://opentdb.com/api_config.php)
 

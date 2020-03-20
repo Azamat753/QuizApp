@@ -20,6 +20,11 @@ public class QuizViewModel extends ViewModel {
     MutableLiveData<Integer> currentQuestionPosition = new MutableLiveData<>();
     SingleLiveEvent<Void> finishEvent = new SingleLiveEvent<>();
 
+    public QuizViewModel() {
+        currentQuestionPosition.setValue(0);
+        count = 0;
+    }
+
     public void init(int amount, Integer category, String difficulty) {
         isLoading.setValue(true);
     }
