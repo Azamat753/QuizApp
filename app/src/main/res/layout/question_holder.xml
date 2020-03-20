@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Google bla-bla"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
 
     <LinearLayout

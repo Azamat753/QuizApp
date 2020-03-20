@@ -17,7 +17,7 @@
     <string name="clear_history">Clear history</string>
 
     <string-array name="categories_list">
-        <item>Any Category</item>
+        <item>All</item>
         <item>General Knowledge</item>
         <item>Entertainment: Books</item>
         <item>Entertainment: Film</item>
@@ -45,7 +45,7 @@
     </string-array>
 
     <string-array name="difficulty_list">
-        <item>Any Difficulty</item>
+        <item>Any</item>
         <item>Easy</item>
         <item>Medium</item>
         <item>Hard</item>
