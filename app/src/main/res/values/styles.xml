@@ -107,7 +107,9 @@
     </style>
 
     <style name="MultipleBtn">
-        <item name="android:layout_width">300dp</item>
+        <item name="android:background">@drawable/quiz_button_background</item>
+        <item name="android:textColor">@color/blue_for_btn</item>
+        <item name="android:layout_width">270dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_marginTop">10dp</item>

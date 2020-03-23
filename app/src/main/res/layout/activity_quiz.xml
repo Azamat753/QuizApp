@@ -28,15 +28,16 @@
 
             <ImageView
                 android:id="@+id/back_image"
-                android:onClick="backImageClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="backImageClick"
                 android:src="@drawable/ic_left"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/category_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Geography"
@@ -49,6 +50,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ProgressBar
+            android:id="@+id/quiz_progressbar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -70,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/skip_button"
+            android:onClick="skipClick"
             android:text="skip"
             android:textColor="@android:color/white"
             android:textSize="20sp" />

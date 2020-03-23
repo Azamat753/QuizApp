@@ -1,5 +1,6 @@
 package com.lawlett.quizapp.presentation.quiz.recycler;
 
+import android.annotation.SuppressLint;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,11 +114,31 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             } else {
                 mult_cont.setVisibility(View.VISIBLE);
                 boolean_cont.setVisibility(View.GONE);
-                first_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)));
-                second_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(1)));
-                third_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(2)));
-                four_btn.setText(Html.fromHtml(question.getCorrectAnswer()));
+                first_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)).toString());
+                try {
+                    second_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(1)).toString());
+                }catch (IndexOutOfBoundsException e){
+                    e.printStackTrace();
+                }
+                third_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(2)).toString());
+                four_btn.setText(Html.fromHtml(question.getCorrectAnswer()).toString());
             }
+        }
+        @SuppressLint("ResourceAsColor")
+        public void reset(){
+            first_btn.setTextColor(R.color.blue_for_btn);
+            second_btn.setTextColor(R.color.blue_for_btn);
+            third_btn.setTextColor(R.color.blue_for_btn);
+            four_btn.setTextColor(R.color.blue_for_btn);
+            first_boolean_btn.setTextColor(R.color.blue_for_btn);
+            second_boolean_btn.setTextColor(R.color.blue_for_btn);
+            first_btn.setBackgroundResource(R.color.white);
+            second_btn.setBackgroundResource(R.color.white);
+            third_btn.setBackgroundResource(R.color.white);
+            four_btn.setBackgroundResource(R.color.white);
+            first_boolean_btn.setBackgroundResource(R.color.white);
+            second_boolean_btn.setBackgroundResource(R.color.white);
+
         }
     }
 }

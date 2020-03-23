@@ -1,11 +1,14 @@
 package com.lawlett.quizapp.presentation.quiz;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -16,47 +19,79 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.data.model.Question;
+import com.lawlett.quizapp.presentation.quiz.recycler.Listener;
 import com.lawlett.quizapp.presentation.quiz.recycler.QuizAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class QuizActivity extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity implements Listener {
     public static final String EXTRA_AMOUNT = "amount";
     public static final String EXTRA_CATEGORY = "category";
     public static final String EXTRA_DIFFICULTY = "difficulty";
     LinearLayout quizLinear;
     LottieAnimationView loading;
     private QuizViewModel quizViewModel;
+    ProgressBar progress;
     RecyclerView recyclerView;
     QuizAdapter adapter;
-
+    int qAmount;
+    Integer category;
+    String difficulty;
+    TextView category_title;
+    List<Question> listQuestion = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         loading = findViewById(R.id.loading_lottie);
-
+        category_title = findViewById(R.id.category_title);
         quizLinear = findViewById(R.id.quiz_linear);
         recyclerView = findViewById(R.id.quiz_recycler);
+        progress = findViewById(R.id.quiz_progressbar);
+        recycler_builder();
+        getQuestion();
+        quizViewModel.currentQuestionPosition.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                recyclerView.scrollToPosition(integer);
+            }
+        });
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    public void recycler_builder() {
         adapter = new QuizAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        int amount = getIntent().getIntExtra("amount", 5);
-        Integer category = getIntent().getIntExtra("category", 0);
-        String difficulty = getIntent().getStringExtra("difficulty");
+        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+    }
+
+    public void getQuestion() {
+        qAmount = getIntent().getIntExtra(EXTRA_AMOUNT, 5);
+        category = getIntent().getIntExtra(EXTRA_CATEGORY, 0);
+        difficulty = getIntent().getStringExtra(EXTRA_DIFFICULTY);
 
         quizViewModel = ViewModelProviders
                 .of(this)
                 .get(QuizViewModel.class);
         if (category == 8) category = null;
         if (difficulty.equals("all")) difficulty = null;
-        quizViewModel.queryOnData(amount, category, difficulty);
+        quizViewModel.queryOnData(qAmount, category, difficulty);
 
         quizViewModel.dataWithQuestion.observe(this, new Observer<List<Question>>() {
             @Override
             public void onChanged(List<Question> questions) {
                 adapter.updateQuestions(questions);
+                listQuestion=questions;
+                getPosition();
+
             }
         });
         quizViewModel.isLoading.observe(this, new Observer<Boolean>() {
@@ -68,11 +103,20 @@ public class QuizActivity extends AppCompatActivity {
                 } else {
                     loading.setVisibility(View.GONE);
                     quizLinear.setVisibility(View.VISIBLE);
+
                 }
+
+            }
+
+        });
+
+        quizViewModel.finishEvent.observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void aVoid) {
+                finish();
             }
         });
         quizViewModel.init(10, 1, "easy");
-
     }
 
     public static void start(Context context, int amount, Integer category, String difficulty) {
@@ -88,7 +132,28 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-       // super.onBackPressed();
+        // super.onBackPressed();
         quizViewModel.onBackPress();
+    }
+
+    public void getPosition() {
+        quizViewModel.currentQuestionPosition.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                recyclerView.scrollToPosition(integer);
+                progress.setProgress(integer + 1);
+                progress.setMax(qAmount);
+                category_title.setText(listQuestion.get(integer).getCategory());
+            }
+        });
+    }
+
+    public void skipClick(View view) {
+        quizViewModel.onSkip();
+    }
+
+    @Override
+    public void onAnswerClick(int position, int selectedAnswerPosition) {
+        quizViewModel.onAnswerClick(position, selectedAnswerPosition);
     }
 }

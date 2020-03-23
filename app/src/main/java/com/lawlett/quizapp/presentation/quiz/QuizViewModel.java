@@ -1,5 +1,8 @@
 package com.lawlett.quizapp.presentation.quiz;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -14,7 +17,9 @@ import java.util.List;
 
 public class QuizViewModel extends ViewModel {
     Integer count;
+    //todo
     List<Question> listQuestion;
+
     MutableLiveData<List<Question>> dataWithQuestion = new MutableLiveData<>();
     MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     MutableLiveData<Integer> currentQuestionPosition = new MutableLiveData<>();
@@ -34,7 +39,10 @@ public class QuizViewModel extends ViewModel {
             @Override
             public void onSuccess(List<Question> questions) {
                 isLoading.setValue(false);
+                listQuestion = questions;
                 dataWithQuestion.setValue(questions);
+                dataWithQuestion.postValue(listQuestion);
+                //todo postValue
                 currentQuestionPosition.setValue(0);
             }
 
@@ -65,6 +73,7 @@ public class QuizViewModel extends ViewModel {
                 onFinishQuiz();
             } else {
                 currentQuestionPosition.setValue(++count);
+
             }
         }
     }
@@ -79,7 +88,6 @@ public class QuizViewModel extends ViewModel {
             }
         }
     }
-
     void onBackPress() {
         if (currentQuestionPosition.getValue() != 0) {
             currentQuestionPosition.setValue(--count);

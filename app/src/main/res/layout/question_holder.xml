@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Google bla-bla"
+        android:textColor="@android:color/black"
         android:textSize="20sp" />
-
 
     <LinearLayout
         android:id="@+id/multiple_question_linear"
