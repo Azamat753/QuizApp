@@ -62,7 +62,7 @@ public class QuizActivity extends AppCompatActivity implements Listener {
 
     @SuppressLint("ClickableViewAccessibility")
     public void recycler_builder() {
-        adapter = new QuizAdapter();
+        adapter = new QuizAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         recyclerView.setOnTouchListener(new View.OnTouchListener() {

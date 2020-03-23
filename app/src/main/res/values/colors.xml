@@ -7,4 +7,8 @@
     <color name="purple">#9C27B0</color>
     <color name="pink">#FF6581</color>
     <color name="white">#FFFFFF</color>
+    <color name="correct_answer">#4CE2A7</color>
+    <color name="incorrect_answer">#FF4D4D</color>
+    <color name="selected_answer">#6979F8</color>
+
 </resources>

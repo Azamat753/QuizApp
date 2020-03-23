@@ -73,7 +73,6 @@ public class QuizViewModel extends ViewModel {
                 onFinishQuiz();
             } else {
                 currentQuestionPosition.setValue(++count);
-
             }
         }
     }
