@@ -62,9 +62,7 @@ public class QuizViewModel extends ViewModel {
                 dataWithQuestion.getValue(),
                 getCorrectAnswersAmount(),
                 new Date()
-        );
-    }
-
+        );}
     void onAnswerClick(int position, int selectedAnswerPosition) {
         if (listQuestion.size() > position && position >= 0) {
             listQuestion.get(position).setSelectedAnswersPosition(selectedAnswerPosition);

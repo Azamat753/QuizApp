@@ -1,7 +1,9 @@
 package com.lawlett.quizapp.presentation.quiz.recycler;
 
 import android.annotation.SuppressLint;
+import android.os.CountDownTimer;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
