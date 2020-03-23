@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.lawlett.quizapp.App;
 import com.lawlett.quizapp.data.model.Question;
 import com.lawlett.quizapp.data.model.QuizResult;
 import com.lawlett.quizapp.data.remote.IQuizApiClient;
@@ -19,7 +20,7 @@ public class QuizViewModel extends ViewModel {
     Integer count;
     //todo
     List<Question> listQuestion;
-
+    String resultCategory, resultDifficulty;
     MutableLiveData<List<Question>> dataWithQuestion = new MutableLiveData<>();
     MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     MutableLiveData<Integer> currentQuestionPosition = new MutableLiveData<>();
@@ -32,6 +33,32 @@ public class QuizViewModel extends ViewModel {
 
     public void init(int amount, Integer category, String difficulty) {
         isLoading.setValue(true);
+    }
+
+
+    void getQuestion(int amount, final Integer category, final String difficulty) {
+        App.quizRepository.getQuestion(amount, category, difficulty, new IQuizApiClient.QuestionCallback() {
+            @Override
+            public void onSuccess(List<Question> result) {
+                listQuestion = result;
+                dataWithQuestion.postValue(listQuestion);
+                if (category != null && result.size() > 0) {
+                    resultCategory = listQuestion.get(0).getCategory();
+                } else {
+                    resultCategory = "Mixed";
+                }
+                if (difficulty != null && result.size() > 0) {
+                    resultDifficulty = listQuestion.get(0).getDifficulty();
+                } else {
+                    resultDifficulty = "All";
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+onFailure(t);
+            }
+        });
     }
 
     void queryOnData(int amount, final Integer category, String difficulty) {

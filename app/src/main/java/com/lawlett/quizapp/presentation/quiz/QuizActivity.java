@@ -78,13 +78,14 @@ public class QuizActivity extends AppCompatActivity implements Listener {
         category = getIntent().getIntExtra(EXTRA_CATEGORY, 0);
         difficulty = getIntent().getStringExtra(EXTRA_DIFFICULTY);
 
+        if (category == 8) category = null;
+
         quizViewModel = ViewModelProviders
                 .of(this)
                 .get(QuizViewModel.class);
-        if (category == 8) category = null;
-        if (difficulty.equals("all")) difficulty = null;
-        quizViewModel.queryOnData(qAmount, category, difficulty);
 
+        quizViewModel.queryOnData(qAmount, category, difficulty);
+        quizViewModel.getQuestion(qAmount,category,difficulty);
         quizViewModel.dataWithQuestion.observe(this, new Observer<List<Question>>() {
             @Override
             public void onChanged(List<Question> questions) {
