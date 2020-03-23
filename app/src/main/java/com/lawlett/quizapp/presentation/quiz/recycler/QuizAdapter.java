@@ -13,17 +13,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lawlett.quizapp.R;
+import com.lawlett.quizapp.data.model.EType;
 import com.lawlett.quizapp.data.model.Question;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
-    List<Question> list;
+    List<Question> list= new ArrayList<>();
     Listener listener;
 
     public QuizAdapter(Listener listener) {
-        list = new ArrayList<>();
+    //    list = new ArrayList<>();
         this.listener = listener;
     }
 
@@ -43,7 +44,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
-        holder.bind(list.get(position), position);
+        holder.bind(list.get(position),position);
     }
 
     @Override
@@ -114,24 +115,24 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             });
         }
 
-        public void bind(Question question, int position) {
+        public void bind(Question question,int position) {
             reset();
             this.position = position;
             question_tv.setText(Html.fromHtml(question.getQuestion()));
 
-            if (question.getType().equals("boolean")) {
+            if (question.getType()==(EType.BOOLEAN)) {
                 mult_cont.setVisibility(View.GONE);
                 boolean_cont.setVisibility(View.VISIBLE);
 
-                first_boolean_btn.setText(Html.fromHtml(question.getCorrectAnswer()));
-                second_boolean_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)));
+                first_boolean_btn.setText(Html.fromHtml(question.getAnswers().get(0)));
+                second_boolean_btn.setText(Html.fromHtml(question.getAnswers().get(1)));
             } else {
                 mult_cont.setVisibility(View.VISIBLE);
                 boolean_cont.setVisibility(View.GONE);
-                first_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)));
-                second_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(1)));
-                third_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(2)));
-                four_btn.setText(Html.fromHtml(question.getCorrectAnswer()).toString());
+                first_btn.setText(Html.fromHtml(question.getAnswers().get(0)));
+                second_btn.setText(Html.fromHtml(question.getAnswers().get(1)));
+                third_btn.setText(Html.fromHtml(question.getAnswers().get(2)));
+                four_btn.setText(Html.fromHtml(question.getAnswers().get(3)));
                 btn_state(question);
             }
         }
@@ -171,7 +172,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                         }
                         break;
                     case 1:
-                        if (question.getCorrectAnswer().equals(question.getAnswers().get(1))) {
+                        if (question.getCorrectAnswer().equals(1)){
                             second_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             second_boolean_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             second_btn.setTextColor(R.color.white);
@@ -184,7 +185,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                         }
                         break;
                     case 2:
-                        if (question.getCorrectAnswer().equals(question.getAnswers().get(2))) {
+                        if (question.getCorrectAnswer().equals(2)) {
                             third_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             third_btn.setTextColor(R.color.white);
 
@@ -194,7 +195,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                         }
                         break;
                     case 3:
-                        if (question.getCorrectAnswer().equals(question.getAnswers().get(3))) {
+                        if (question.getCorrectAnswer().equals(3)) {
                             four_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             four_btn.setTextColor(R.color.white);
                         } else {

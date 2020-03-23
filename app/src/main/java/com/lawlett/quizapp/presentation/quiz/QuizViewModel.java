@@ -1,10 +1,7 @@
 package com.lawlett.quizapp.presentation.quiz;
 
-import android.app.Activity;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.CountDownTimer;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -62,7 +59,7 @@ public class QuizViewModel extends ViewModel {
                 "",
                 "",
                 dataWithQuestion.getValue(),
-                1,
+                getCorrectAnswersAmount(),
                 new Date()
         );
     }
@@ -76,11 +73,12 @@ public class QuizViewModel extends ViewModel {
                 onFinishQuiz();
             } else {
                 int seconds = 1;
-                CountDownTimer countDownTimer = new CountDownTimer(seconds*1000,1000) {
+                CountDownTimer countDownTimer = new CountDownTimer(seconds * 1000, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
-                        Log.e("olo", "onTick: " );
+                        Log.e("olo", "onTick: ");
                     }
+
                     @Override
                     public void onFinish() {
                         currentQuestionPosition.setValue(++count);
@@ -101,11 +99,28 @@ public class QuizViewModel extends ViewModel {
             }
         }
     }
+
     void onBackPress() {
         if (currentQuestionPosition.getValue() != 0) {
             currentQuestionPosition.setValue(--count);
         } else {
             finishEvent.call();
         }
+    }
+
+    private int getCorrectAnswersAmount() {
+        int correctAnswersAmount = 0;
+        for (int i = 0; i < listQuestion.size() - 1; i++) {
+            if (listQuestion.get(i).getSelectedAnswersPosition() != null) {
+                String correctAnswer = listQuestion.get(i).getCorrectAnswer();
+                String selectedAnswer = listQuestion.get(i).getAnswers()
+                        .get(listQuestion.get(i).getSelectedAnswersPosition());
+                if (correctAnswer.equals(selectedAnswer)) {
+                    correctAnswersAmount++;
+                }
+            }
+        }
+
+        return correctAnswersAmount;
     }
 }
