@@ -20,11 +20,11 @@ import java.util.List;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
     List<Question> list;
-   Listener listener;
+    Listener listener;
 
     public QuizAdapter(Listener listener) {
         list = new ArrayList<>();
-        this.listener= listener;
+        this.listener = listener;
     }
 
     public void updateQuestions(List<Question> list) {
@@ -43,7 +43,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
-        holder.bind(list.get(position),position);
+        holder.bind(list.get(position), position);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
         Button first_boolean_btn, second_boolean_btn, first_btn, second_btn, third_btn, four_btn;
         LinearLayout mult_cont, boolean_cont;
         Listener listener;
-        int position;
+        private int position;
 
         public QuizViewHolder(@NonNull View itemView, Listener listener) {
             super(itemView);
@@ -114,41 +114,43 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             });
         }
 
-        public void bind(Question question,int position) {
+        public void bind(Question question, int position) {
+            reset();
             this.position = position;
             question_tv.setText(Html.fromHtml(question.getQuestion()));
 
-                if (question.getType().equals("boolean")) {
-                    mult_cont.setVisibility(View.GONE);
-                    boolean_cont.setVisibility(View.VISIBLE);
+            if (question.getType().equals("boolean")) {
+                mult_cont.setVisibility(View.GONE);
+                boolean_cont.setVisibility(View.VISIBLE);
 
-                    first_boolean_btn.setText(Html.fromHtml(question.getCorrectAnswer()));
-                    second_boolean_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)));
-                } else {
-                    mult_cont.setVisibility(View.VISIBLE);
-                    boolean_cont.setVisibility(View.GONE);
-                    first_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)).toString());
-                    second_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(1)).toString());
-                }
-                third_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(2)).toString());
+                first_boolean_btn.setText(Html.fromHtml(question.getCorrectAnswer()));
+                second_boolean_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)));
+            } else {
+                mult_cont.setVisibility(View.VISIBLE);
+                boolean_cont.setVisibility(View.GONE);
+                first_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(0)));
+                second_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(1)));
+                third_btn.setText(Html.fromHtml(question.getIncorrectAnswer().get(2)));
                 four_btn.setText(Html.fromHtml(question.getCorrectAnswer()).toString());
                 btn_state(question);
+            }
         }
+
         @SuppressLint("ResourceAsColor")
         public void reset() {
-            first_btn.setTextColor(R.color.blue_for_btn);
-            second_btn.setTextColor(R.color.blue_for_btn);
-            third_btn.setTextColor(R.color.blue_for_btn);
-            four_btn.setTextColor(R.color.blue_for_btn);
-            first_boolean_btn.setTextColor(R.color.blue_for_btn);
-            second_boolean_btn.setTextColor(R.color.blue_for_btn);
-            first_btn.setBackgroundResource(R.color.white);
-            second_btn.setBackgroundResource(R.color.white);
-            third_btn.setBackgroundResource(R.color.white);
-            four_btn.setBackgroundResource(R.color.white);
-            first_boolean_btn.setBackgroundResource(R.color.white);
-            second_boolean_btn.setBackgroundResource(R.color.white);
+            first_btn.setBackgroundResource(R.drawable.quiz_button_background);
+            second_btn.setBackgroundResource(R.drawable.quiz_button_background);
+            third_btn.setBackgroundResource(R.drawable.quiz_button_background);
+            four_btn.setBackgroundResource(R.drawable.quiz_button_background);
+            first_boolean_btn.setBackgroundResource(R.drawable.quiz_button_background);
+            second_boolean_btn.setBackgroundResource(R.drawable.quiz_button_background);
 
+            first_btn.setTextColor(itemView.getResources().getColor(R.color.blue_for_btn));
+            second_btn.setTextColor(itemView.getResources().getColor(R.color.blue_for_btn));
+            third_btn.setTextColor(itemView.getResources().getColor(R.color.blue_for_btn));
+            four_btn.setTextColor(itemView.getResources().getColor(R.color.blue_for_btn));
+            first_boolean_btn.setTextColor(itemView.getResources().getColor(R.color.blue_for_btn));
+            second_boolean_btn.setTextColor(itemView.getResources().getColor(R.color.blue_for_btn));
         }
 
         @SuppressLint("ResourceAsColor")

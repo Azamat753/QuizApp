@@ -1,5 +1,8 @@
 package com.lawlett.quizapp.presentation.quiz;
 
+import android.app.Activity;
+import android.icu.text.UnicodeSetSpanner;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -72,7 +75,18 @@ public class QuizViewModel extends ViewModel {
             if (position + 1 == listQuestion.size()) {
                 onFinishQuiz();
             } else {
-                currentQuestionPosition.setValue(++count);
+                int seconds = 1;
+                CountDownTimer countDownTimer = new CountDownTimer(seconds*1000,1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        Log.e("olo", "onTick: " );
+                    }
+                    @Override
+                    public void onFinish() {
+                        currentQuestionPosition.setValue(++count);
+                    }
+                }.start();
+
             }
         }
     }
