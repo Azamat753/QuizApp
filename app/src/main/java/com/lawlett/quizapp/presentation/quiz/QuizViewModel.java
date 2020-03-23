@@ -11,6 +11,7 @@ import com.lawlett.quizapp.data.model.Question;
 import com.lawlett.quizapp.data.model.QuizResult;
 import com.lawlett.quizapp.data.remote.IQuizApiClient;
 import com.lawlett.quizapp.data.remote.QuizApiClient;
+import com.lawlett.quizapp.data.remote.QuizRepository;
 import com.lawlett.quizapp.utils.SingleLiveEvent;
 
 import java.util.Date;
@@ -34,50 +35,23 @@ public class QuizViewModel extends ViewModel {
     public void init(int amount, Integer category, String difficulty) {
         isLoading.setValue(true);
     }
-
-
-    void getQuestion(int amount, final Integer category, final String difficulty) {
-        App.quizRepository.getQuestion(amount, category, difficulty, new IQuizApiClient.QuestionCallback() {
-            @Override
-            public void onSuccess(List<Question> result) {
-                listQuestion = result;
-                dataWithQuestion.postValue(listQuestion);
-                if (category != null && result.size() > 0) {
-                    resultCategory = listQuestion.get(0).getCategory();
-                } else {
-                    resultCategory = "Mixed";
-                }
-                if (difficulty != null && result.size() > 0) {
-                    resultDifficulty = listQuestion.get(0).getDifficulty();
-                } else {
-                    resultDifficulty = "All";
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-onFailure(t);
-            }
-        });
-    }
-
     void queryOnData(int amount, final Integer category, String difficulty) {
-        new QuizApiClient().getQuestion(amount, category, difficulty, new IQuizApiClient.QuestionCallback() {
-            @Override
-            public void onSuccess(List<Question> questions) {
-                isLoading.setValue(false);
-                listQuestion = questions;
-                dataWithQuestion.setValue(questions);
-                dataWithQuestion.postValue(listQuestion);
-                //todo postValue
-                currentQuestionPosition.setValue(0);
-            }
+         App.quizRepository.getQuestion(amount, category, difficulty, new IQuizApiClient.QuestionCallback() {
+             @Override
+             public void onSuccess(List<Question> result) {
+                 isLoading.setValue(false);
+                 listQuestion = result;
+                 dataWithQuestion.setValue(result);
+                 dataWithQuestion.postValue(listQuestion);
+                 //todo postValue
+                 currentQuestionPosition.setValue(0);
+             }
 
-            @Override
-            public void onFailure(Throwable t) {
-                isLoading.setValue(false);
-            }
-        });
+             @Override
+             public void onFailure(Throwable t) {
+                 isLoading.setValue(false);
+             }
+         });
     }
 
     void onFinishQuiz() {

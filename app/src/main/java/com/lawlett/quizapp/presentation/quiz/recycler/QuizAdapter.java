@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder> {
-    List<Question> list= new ArrayList<>();
+    List<Question> list = new ArrayList<>();
     Listener listener;
 
     public QuizAdapter(Listener listener) {
-    //    list = new ArrayList<>();
+        //    list = new ArrayList<>();
         this.listener = listener;
     }
 
@@ -44,7 +44,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull QuizViewHolder holder, int position) {
-        holder.bind(list.get(position),position);
+        holder.bind(list.get(position), position);
     }
 
     @Override
@@ -115,12 +115,12 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             });
         }
 
-        public void bind(Question question,int position) {
+        public void bind(Question question, int position) {
             reset();
             this.position = position;
             question_tv.setText(Html.fromHtml(question.getQuestion()));
 
-            if (question.getType()==(EType.BOOLEAN)) {
+            if (question.getType() == (EType.BOOLEAN)) {
                 mult_cont.setVisibility(View.GONE);
                 boolean_cont.setVisibility(View.VISIBLE);
 
@@ -159,7 +159,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
             if (question.getSelectedAnswersPosition() != null) {
                 switch (question.getSelectedAnswersPosition()) {
                     case 0:
-                        if (question.getCorrectAnswer().equals(0)) {
+                        if (question.getCorrectAnswer().equals(question.getAnswers().get(0))) {
                             first_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             first_boolean_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             first_btn.setTextColor(R.color.white);
@@ -172,7 +172,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                         }
                         break;
                     case 1:
-                        if (question.getCorrectAnswer().equals(1)){
+                        if (question.getCorrectAnswer().equals(question.getAnswers().get(1))) {
                             second_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             second_boolean_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             second_btn.setTextColor(R.color.white);
@@ -185,7 +185,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                         }
                         break;
                     case 2:
-                        if (question.getCorrectAnswer().equals(2)) {
+                        if (question.getCorrectAnswer().equals(question.getAnswers().get(2))) {
                             third_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             third_btn.setTextColor(R.color.white);
 
@@ -195,7 +195,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                         }
                         break;
                     case 3:
-                        if (question.getCorrectAnswer().equals(3)) {
+                        if (question.getCorrectAnswer().equals(question.getAnswers().get(3))) {
                             four_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             four_btn.setTextColor(R.color.white);
                         } else {

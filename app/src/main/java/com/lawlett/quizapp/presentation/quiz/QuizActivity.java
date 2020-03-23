@@ -85,7 +85,7 @@ public class QuizActivity extends AppCompatActivity implements Listener {
                 .get(QuizViewModel.class);
 
         quizViewModel.queryOnData(qAmount, category, difficulty);
-        quizViewModel.getQuestion(qAmount,category,difficulty);
+
         quizViewModel.dataWithQuestion.observe(this, new Observer<List<Question>>() {
             @Override
             public void onChanged(List<Question> questions) {
