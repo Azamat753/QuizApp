@@ -13,20 +13,20 @@ public class HistoryStorage {
         this.mHistoryDao = historyDao;
     }
 
-    void saveQuizResult(QuizResult quizResult) {
-        mHistoryDao.insert(quizResult);
+    public int saveQuizResult(QuizResult quizResult) {
+        return (int) mHistoryDao.insert(quizResult);
     }
 
-    void deleteQuizResultByID(int id) {
+    public void deleteQuizResultByID(int id) {
         mHistoryDao.deleteById(id);
     }
 
-    void deleteAllQuizResult() {
+    public void deleteAllQuizResult() {
         mHistoryDao.deleteAll();
     }
 
-    void getQuizResultById(int id) {
-        mHistoryDao.get(id);
+    public QuizResult getQuizResultById(int id) {
+        return mHistoryDao.get(id);
     }
 
     public LiveData<List<QuizResult>> getAll() {

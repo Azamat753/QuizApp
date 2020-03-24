@@ -127,6 +127,12 @@ public class QuizActivity extends AppCompatActivity implements Listener {
                 finish();
             }
         });
+        quizViewModel.openResultEvent.observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+ResultActivity.start(QuizActivity.this,integer);
+            }
+        });
         quizViewModel.init(10, 1, "easy");
     }
 
@@ -136,9 +142,6 @@ public class QuizActivity extends AppCompatActivity implements Listener {
                 .putExtra(EXTRA_CATEGORY, category)
                 .putExtra(EXTRA_DIFFICULTY, difficulty));
     }
-
-    
-
     public void backImageClick(View view) {
         quizViewModel.onBackPress();
     }

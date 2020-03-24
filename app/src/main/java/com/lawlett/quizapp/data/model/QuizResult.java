@@ -85,4 +85,6 @@ public class QuizResult {
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
+
+
 }

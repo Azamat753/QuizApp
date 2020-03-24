@@ -8,7 +8,6 @@
     tools:context=".presentation.main.MainActivity">
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/internet_off"
         android:layout_width="match_parent"
         android:layout_height="100dp"

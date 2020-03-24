@@ -10,12 +10,14 @@ import com.lawlett.quizapp.App;
 import com.lawlett.quizapp.data.model.Question;
 import com.lawlett.quizapp.data.model.QuizResult;
 import com.lawlett.quizapp.data.remote.IQuizApiClient;
+import com.lawlett.quizapp.data.remote.QuizRepository;
 import com.lawlett.quizapp.utils.SingleLiveEvent;
 
 import java.util.Date;
 import java.util.List;
 
 public class QuizViewModel extends ViewModel {
+    private QuizRepository quizRepository = App.quizRepository;
     Integer count;
     //todo
     List<Question> listQuestion;
@@ -23,6 +25,7 @@ public class QuizViewModel extends ViewModel {
     MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     MutableLiveData<Integer> currentQuestionPosition = new MutableLiveData<>();
     SingleLiveEvent<Void> finishEvent = new SingleLiveEvent<>();
+    SingleLiveEvent<Integer> openResultEvent = new SingleLiveEvent<>();
 
     public QuizViewModel() {
         currentQuestionPosition.setValue(0);
@@ -32,23 +35,24 @@ public class QuizViewModel extends ViewModel {
     public void init(int amount, Integer category, String difficulty) {
         isLoading.setValue(true);
     }
-    void queryOnData(int amount, final Integer category, String difficulty) {
-         App.quizRepository.getQuestion(amount, category, difficulty, new IQuizApiClient.QuestionCallback() {
-             @Override
-             public void onSuccess(List<Question> result) {
-                 isLoading.setValue(false);
-                 listQuestion = result;
-                 dataWithQuestion.setValue(result);
-                 dataWithQuestion.postValue(listQuestion);
-                 //todo postValue
-                 currentQuestionPosition.setValue(0);
-             }
 
-             @Override
-             public void onFailure(Throwable t) {
-                 isLoading.setValue(false);
-             }
-         });
+    void queryOnData(int amount, final Integer category, String difficulty) {
+        App.quizRepository.getQuestion(amount, category, difficulty, new IQuizApiClient.QuestionCallback() {
+            @Override
+            public void onSuccess(List<Question> result) {
+                isLoading.setValue(false);
+                listQuestion = result;
+                dataWithQuestion.setValue(result);
+                dataWithQuestion.postValue(listQuestion);
+                //todo postValue
+                currentQuestionPosition.setValue(0);
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                isLoading.setValue(false);
+            }
+        });
     }
 
     void onFinishQuiz() {
@@ -59,7 +63,14 @@ public class QuizViewModel extends ViewModel {
                 dataWithQuestion.getValue(),
                 getCorrectAnswersAmount(),
                 new Date()
-        );}
+        );
+        int resultId = quizRepository.saveQuizResult(quizResult);
+
+        Log.e("olololo", "resultid"+resultId );
+        finishEvent.call();
+        openResultEvent.setValue(resultId);
+    }
+
     void onAnswerClick(int position, int selectedAnswerPosition) {
         if (listQuestion.size() > position && position >= 0) {
             listQuestion.get(position).setSelectedAnswersPosition(selectedAnswerPosition);
