@@ -119,6 +119,11 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
         public void bind(Question question, int position) {
             reset();
+if (question.isAnswered()){
+setButtonsEnabled(false);
+}else {
+setButtonsEnabled(true);
+}
             this.position = position;
             question_tv.setText(Html.fromHtml(question.getQuestion()));
 
@@ -171,6 +176,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                             first_boolean_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
                             first_btn.setTextColor(R.color.white);
                             first_boolean_btn.setTextColor(R.color.white);
+                            blueState(question);
                         }
                         break;
                     case 1:
@@ -184,6 +190,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                             second_boolean_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
                             second_btn.setTextColor(R.color.white);
                             second_boolean_btn.setTextColor(R.color.white);
+                            blueState(question);
                         }
                         break;
                     case 2:
@@ -194,6 +201,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                         } else {
                             third_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
                             third_btn.setTextColor(R.color.white);
+                            blueState(question);
                         }
                         break;
                     case 3:
@@ -202,6 +210,52 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
                             four_btn.setTextColor(R.color.white);
                         } else {
                             four_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
+                            four_btn.setTextColor(R.color.white);
+                            blueState(question);
+                        }
+                        break;
+                }
+            }
+        }
+
+        public void setButtonsEnabled(boolean enabled) {
+            first_boolean_btn.setEnabled(enabled);
+            second_boolean_btn.setEnabled(enabled);
+            first_btn.setEnabled(enabled);
+            second_btn.setEnabled(enabled);
+            third_btn.setEnabled(enabled);
+            four_btn.setEnabled(enabled);
+        }
+
+        @SuppressLint("ResourceAsColor")
+        void blueState(Question question) {
+            if (question.getSelectedAnswersPosition() != null) {
+                switch (question.getSelectedAnswersPosition()) {
+                    case 0:
+                        if (question.getCorrectAnswer().equals(question.getAnswers().get(0))) {
+                            first_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                            first_boolean_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                            first_btn.setTextColor(R.color.white);
+                            first_boolean_btn.setTextColor(R.color.white);
+                        }
+                        break;
+                    case 1:
+                        if (question.getCorrectAnswer().equals(question.getAnswers().get(1))) {
+                            second_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                            second_boolean_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                            second_btn.setTextColor(R.color.white);
+                            second_boolean_btn.setTextColor(R.color.white);
+                        }
+                        break;
+                    case 2:
+                        if (question.getCorrectAnswer().equals(question.getAnswers().get(2))) {
+                            third_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                            third_btn.setTextColor(R.color.white);
+                        }
+                        break;
+                    case 3:
+                        if (question.getCorrectAnswer().equals(question.getAnswers().get(3))) {
+                            four_btn.setBackgroundResource(R.drawable.selected_answer_state);
                             four_btn.setTextColor(R.color.white);
                         }
                         break;

@@ -10,8 +10,6 @@ import com.lawlett.quizapp.App;
 import com.lawlett.quizapp.data.model.Question;
 import com.lawlett.quizapp.data.model.QuizResult;
 import com.lawlett.quizapp.data.remote.IQuizApiClient;
-import com.lawlett.quizapp.data.remote.QuizApiClient;
-import com.lawlett.quizapp.data.remote.QuizRepository;
 import com.lawlett.quizapp.utils.SingleLiveEvent;
 
 import java.util.Date;
@@ -21,7 +19,6 @@ public class QuizViewModel extends ViewModel {
     Integer count;
     //todo
     List<Question> listQuestion;
-    String resultCategory, resultDifficulty;
     MutableLiveData<List<Question>> dataWithQuestion = new MutableLiveData<>();
     MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     MutableLiveData<Integer> currentQuestionPosition = new MutableLiveData<>();
