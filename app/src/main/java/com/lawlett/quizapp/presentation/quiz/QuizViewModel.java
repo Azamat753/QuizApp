@@ -46,6 +46,8 @@ public class QuizViewModel extends ViewModel {
                 dataWithQuestion.postValue(listQuestion);
                 //todo postValue
                 currentQuestionPosition.setValue(0);
+
+
             }
 
             @Override
@@ -58,17 +60,17 @@ public class QuizViewModel extends ViewModel {
     void onFinishQuiz() {
         QuizResult quizResult = new QuizResult(
                 0,
-                "",
-                "",
+                listQuestion.get(0).getCategory(),
+                listQuestion.get(0).getDifficulty(),
                 dataWithQuestion.getValue(),
                 getCorrectAnswersAmount(),
                 new Date()
         );
-        int resultId = App.quizRepository.saveQuizResult(quizResult);
+        int resultId = quizRepository.saveQuizResult(quizResult);
 
-        Log.e("olololo", "resultid"+resultId );
-        finishEvent.call();
+        Log.e("olololo", "resultid" + resultId);
         openResultEvent.setValue(resultId);
+        finishEvent.call();
     }
 
     void onAnswerClick(int position, int selectedAnswerPosition) {

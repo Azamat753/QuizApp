@@ -24,21 +24,12 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
         id = getIntent().getIntExtra(EXTRA_RESULT_ID, 0);
+        initViews();
         viewModel.getResult(id);
         Log.e("resultActivity", "resultActivity" + id );
-        viewModel = ViewModelProviders.of(this).get(ResultViewModel.class);
-        difficultValue = findViewById(R.id.difficulty_result);
-        resultPercent = findViewById(R.id.correct_answer_procent);
-        correctAnswersAmount = findViewById(R.id.correct_answer_result);
-        resultCategory = findViewById(R.id.category_result);
         showResult();
-        findViewById(R.id.finish_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
     public static void start(Context context, Integer resultId) {
         context.startActivity(new Intent(context, ResultActivity.class).putExtra(EXTRA_RESULT_ID, resultId));
@@ -49,13 +40,24 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onChanged(QuizResult quizResult) {
                 resultCategory.setText("Category: " + quizResult.getCategory());
-                difficultValue.setText(quizResult.getDifficulty());
+                difficultValue.setText(quizResult.getDifficulty()+"");
                 correctAnswersAmount.setText(quizResult.getCorrectAnswersAmount() + "/" + quizResult.getQuestions().size());
                 int correctAnswersPercent = (int) ((double) quizResult.getCorrectAnswersAmount() / quizResult.getQuestions().size() * 100);
                 resultPercent.setText(correctAnswersPercent + " %");
+                Log.e("popopo", "difficulty "+difficultValue + "-------" +quizResult.getDifficulty() );
             }
         });
     }
+    public void initViews(){
+        viewModel = ViewModelProviders.of(this).get(ResultViewModel.class);
+        difficultValue = findViewById(R.id.difficulty_result);
+        resultPercent = findViewById(R.id.correct_answer_procent);
+        correctAnswersAmount = findViewById(R.id.correct_answer_result);
+        resultCategory = findViewById(R.id.category_result);
+    }
 
 
+    public void finishQuiz(View view) {
+        finish();
+    }
 }

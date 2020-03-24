@@ -110,6 +110,7 @@
 
     <Button
         android:id="@+id/finish_btn"
+        android:onClick="finishQuiz"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
