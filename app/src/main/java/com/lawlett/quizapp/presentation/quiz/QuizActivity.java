@@ -1,15 +1,23 @@
 package com.lawlett.quizapp.presentation.quiz;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkInfo;
+import android.net.NetworkRequest;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -19,8 +27,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.data.model.Question;
+import com.lawlett.quizapp.presentation.main.MainActivity;
 import com.lawlett.quizapp.presentation.quiz.recycler.Listener;
 import com.lawlett.quizapp.presentation.quiz.recycler.QuizAdapter;
+import com.lawlett.quizapp.presentation.result.ResultActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +50,7 @@ public class QuizActivity extends AppCompatActivity implements Listener {
     String difficulty;
     TextView category_title;
     List<Question> listQuestion = new ArrayList<>();
-
+    BroadcastReceiver conReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +136,8 @@ public class QuizActivity extends AppCompatActivity implements Listener {
                 .putExtra(EXTRA_CATEGORY, category)
                 .putExtra(EXTRA_DIFFICULTY, difficulty));
     }
+
+    
 
     public void backImageClick(View view) {
         quizViewModel.onBackPress();

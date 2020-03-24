@@ -67,6 +67,7 @@ public class QuizViewModel extends ViewModel {
             dataWithQuestion.setValue(listQuestion);
             if (position + 1 == listQuestion.size()) {
                 onFinishQuiz();
+
             } else {
                 int seconds = 1;
                 CountDownTimer countDownTimer = new CountDownTimer(seconds * 1000, 1000) {

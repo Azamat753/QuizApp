@@ -88,6 +88,7 @@ public class MainFragment extends CoreFragment {
         }
         return difficult;
     }
+
 }
 
 
