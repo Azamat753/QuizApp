@@ -20,7 +20,7 @@ public class MainFragment extends CoreFragment {
     private MainViewModel mViewModel;
     SeekBar seekBar;
     Spinner spinnercat, spinnerdif;
-
+    String difficult;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -38,6 +38,7 @@ public class MainFragment extends CoreFragment {
                 .of(getActivity()).get(MainViewModel.class);
 
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -50,12 +51,15 @@ public class MainFragment extends CoreFragment {
         view.findViewById(R.id.main_start_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                QuizActivity.start(getActivity(),seekBar.getProgress(),
-                        spinnercat.getSelectedItemPosition()+8,
-                        spinnerdif.getSelectedItem().toString().toLowerCase());
+                int spinnerCategory = 0;
+                if (spinnercat.getSelectedItemPosition() != 0) {
+                    spinnerCategory = spinnercat.getSelectedItemPosition() + 8;
+                    QuizActivity.start(getActivity(), seekBar.getProgress(),
+                            spinnerCategory,
+                            getDifficulty());
+                }
             }
         });
-
 
 
         seekBar.setOnSeekBarChangeListener(new SimpleOnSeekBarChangeListener() {
@@ -66,12 +70,24 @@ public class MainFragment extends CoreFragment {
             }
         });
     }
-//    public void onStartClick(){
-//Integer categoryId = null;
-//if (spinnercat.getSelectedItemId()!=0){
-//categoryId= spinnercat
-//}
-//    }
+
+    public String getDifficulty() {
+        switch (spinnerdif.getSelectedItemPosition()) {
+            case 0:
+                difficult = null;
+                break;
+            case 1:
+                difficult = "easy";
+                break;
+            case 2:
+                difficult = "medium";
+                break;
+            case 3:
+                difficult = "hard";
+                break;
+        }
+        return difficult;
+    }
 }
 
 
