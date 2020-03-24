@@ -51,13 +51,13 @@ public class MainFragment extends CoreFragment {
         view.findViewById(R.id.main_start_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int spinnerCategory = 0;
+                Integer spinnerCategory = null;
                 if (spinnercat.getSelectedItemPosition() != 0) {
                     spinnerCategory = spinnercat.getSelectedItemPosition() + 8;
-                    QuizActivity.start(getActivity(), seekBar.getProgress(),
-                            spinnerCategory,
-                            getDifficulty());
                 }
+                QuizActivity.start(getActivity(), seekBar.getProgress(),
+                        spinnerCategory,
+                        getDifficulty());
             }
         });
 

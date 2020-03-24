@@ -119,11 +119,11 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.QuizViewHolder
 
         public void bind(Question question, int position) {
             reset();
-if (question.isAnswered()){
-setButtonsEnabled(false);
-}else {
-setButtonsEnabled(true);
-}
+            if (question.isAnswered()) {
+                setButtonsEnabled(false);
+            } else {
+                setButtonsEnabled(true);
+            }
             this.position = position;
             question_tv.setText(Html.fromHtml(question.getQuestion()));
 
@@ -140,8 +140,8 @@ setButtonsEnabled(true);
                 second_btn.setText(Html.fromHtml(question.getAnswers().get(1)));
                 third_btn.setText(Html.fromHtml(question.getAnswers().get(2)));
                 four_btn.setText(Html.fromHtml(question.getAnswers().get(3)));
-                btn_state(question);
             }
+            btn_state(question);
         }
 
         @SuppressLint("ResourceAsColor")
@@ -172,11 +172,12 @@ setButtonsEnabled(true);
                             first_btn.setTextColor(R.color.white);
                             first_boolean_btn.setTextColor(R.color.white);
                         } else {
+                            blueState(question);
                             first_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
                             first_boolean_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
                             first_btn.setTextColor(R.color.white);
                             first_boolean_btn.setTextColor(R.color.white);
-                            blueState(question);
+
                         }
                         break;
                     case 1:
@@ -186,11 +187,12 @@ setButtonsEnabled(true);
                             second_btn.setTextColor(R.color.white);
                             second_boolean_btn.setTextColor(R.color.white);
                         } else {
+                            blueState(question);
                             second_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
                             second_boolean_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
                             second_btn.setTextColor(R.color.white);
                             second_boolean_btn.setTextColor(R.color.white);
-                            blueState(question);
+
                         }
                         break;
                     case 2:
@@ -199,9 +201,10 @@ setButtonsEnabled(true);
                             third_btn.setTextColor(R.color.white);
 
                         } else {
+                            blueState(question);
                             third_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
                             third_btn.setTextColor(R.color.white);
-                            blueState(question);
+
                         }
                         break;
                     case 3:
@@ -209,9 +212,10 @@ setButtonsEnabled(true);
                             four_btn.setBackgroundResource(R.drawable.correct_answer_state);
                             four_btn.setTextColor(R.color.white);
                         } else {
+                            blueState(question);
                             four_btn.setBackgroundResource(R.drawable.incorrect_answer_state);
                             four_btn.setTextColor(R.color.white);
-                            blueState(question);
+
                         }
                         break;
                 }
@@ -229,37 +233,22 @@ setButtonsEnabled(true);
 
         @SuppressLint("ResourceAsColor")
         void blueState(Question question) {
-            if (question.getSelectedAnswersPosition() != null) {
-                switch (question.getSelectedAnswersPosition()) {
-                    case 0:
-                        if (question.getCorrectAnswer().equals(question.getAnswers().get(0))) {
-                            first_btn.setBackgroundResource(R.drawable.selected_answer_state);
-                            first_boolean_btn.setBackgroundResource(R.drawable.selected_answer_state);
-                            first_btn.setTextColor(R.color.white);
-                            first_boolean_btn.setTextColor(R.color.white);
-                        }
-                        break;
-                    case 1:
-                        if (question.getCorrectAnswer().equals(question.getAnswers().get(1))) {
-                            second_btn.setBackgroundResource(R.drawable.selected_answer_state);
-                            second_boolean_btn.setBackgroundResource(R.drawable.selected_answer_state);
-                            second_btn.setTextColor(R.color.white);
-                            second_boolean_btn.setTextColor(R.color.white);
-                        }
-                        break;
-                    case 2:
-                        if (question.getCorrectAnswer().equals(question.getAnswers().get(2))) {
-                            third_btn.setBackgroundResource(R.drawable.selected_answer_state);
-                            third_btn.setTextColor(R.color.white);
-                        }
-                        break;
-                    case 3:
-                        if (question.getCorrectAnswer().equals(question.getAnswers().get(3))) {
-                            four_btn.setBackgroundResource(R.drawable.selected_answer_state);
-                            four_btn.setTextColor(R.color.white);
-                        }
-                        break;
-                }
+            if (question.getCorrectAnswer().equals(question.getAnswers().get(0))) {
+                first_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                first_boolean_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                first_btn.setTextColor(R.color.white);
+                first_boolean_btn.setTextColor(R.color.white);
+            } else if (question.getCorrectAnswer().equals(question.getAnswers().get(1))) {
+                second_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                second_boolean_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                second_btn.setTextColor(R.color.white);
+                second_boolean_btn.setTextColor(R.color.white);
+            } else if (question.getCorrectAnswer().equals(question.getAnswers().get(2))) {
+                third_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                third_btn.setTextColor(R.color.white);
+            } else {
+                four_btn.setBackgroundResource(R.drawable.selected_answer_state);
+                four_btn.setTextColor(R.color.white);
             }
         }
     }
