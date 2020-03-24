@@ -51,6 +51,7 @@ public class QuizActivity extends AppCompatActivity implements Listener {
     TextView category_title;
     List<Question> listQuestion = new ArrayList<>();
     BroadcastReceiver conReceiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +101,7 @@ public class QuizActivity extends AppCompatActivity implements Listener {
             @Override
             public void onChanged(List<Question> questions) {
                 adapter.updateQuestions(questions);
-                listQuestion=questions;
+                listQuestion = questions;
                 getPosition();
 
             }
@@ -130,7 +131,7 @@ public class QuizActivity extends AppCompatActivity implements Listener {
         quizViewModel.openResultEvent.observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
-ResultActivity.start(QuizActivity.this,integer);
+                ResultActivity.start(QuizActivity.this, integer);
             }
         });
         quizViewModel.init(10, 1, "easy");
@@ -142,6 +143,7 @@ ResultActivity.start(QuizActivity.this,integer);
                 .putExtra(EXTRA_CATEGORY, category)
                 .putExtra(EXTRA_DIFFICULTY, difficulty));
     }
+
     public void backImageClick(View view) {
         quizViewModel.onBackPress();
     }

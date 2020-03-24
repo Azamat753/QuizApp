@@ -64,7 +64,7 @@ public class QuizViewModel extends ViewModel {
                 getCorrectAnswersAmount(),
                 new Date()
         );
-        int resultId = quizRepository.saveQuizResult(quizResult);
+        int resultId = App.quizRepository.saveQuizResult(quizResult);
 
         Log.e("olololo", "resultid"+resultId );
         finishEvent.call();

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,7 +15,7 @@ import com.lawlett.quizapp.R;
 import com.lawlett.quizapp.data.model.QuizResult;
 
 public class ResultActivity extends AppCompatActivity {
-    public static final String RESULT_ID = "RESULT_ID";
+    public static final String EXTRA_RESULT_ID = "RESULT_ID";
     TextView resultPercent, difficultValue, correctAnswersAmount, resultCategory;
     ResultViewModel viewModel;
     Integer id;
@@ -23,9 +24,9 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        id = getIntent().getIntExtra(RESULT_ID, 0);
+        id = getIntent().getIntExtra(EXTRA_RESULT_ID, 0);
         viewModel.getResult(id);
-
+        Log.e("resultActivity", "resultActivity" + id );
         viewModel = ViewModelProviders.of(this).get(ResultViewModel.class);
         difficultValue = findViewById(R.id.difficulty_result);
         resultPercent = findViewById(R.id.correct_answer_procent);
@@ -40,7 +41,7 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
     public static void start(Context context, Integer resultId) {
-        context.startActivity(new Intent(context, ResultActivity.class).putExtra(RESULT_ID, resultId));
+        context.startActivity(new Intent(context, ResultActivity.class).putExtra(EXTRA_RESULT_ID, resultId));
     }
 
     public void showResult() {
