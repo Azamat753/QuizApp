@@ -56,12 +56,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             difficulty_tv = itemView.findViewById(R.id.difficult_tv_h);
             data_tv = itemView.findViewById(R.id.data_item);
         }
-
         public void bind(History history) {
-//            category_tv.setText(history.getCategory());
-//            correct_answer_tv.setText(history.getCorrectAnswers());
-//            difficulty_tv.setText(history.getDifficulty());
-//            data_tv.setText(history.getCreateAt().toString());
+            category_tv.setText("Category: "+history.getCategory());
+            correct_answer_tv.setText("Correct answers: "+history.getQuestionAmount()  +"/"+ history.getCorrectAnswers());
+            difficulty_tv.setText("Difficulty: "+history.getDifficulty());
+            data_tv.setText(history.getCreateAt().toString());
         }
     }
 }

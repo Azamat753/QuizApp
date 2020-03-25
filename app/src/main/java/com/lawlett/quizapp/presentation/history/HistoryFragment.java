@@ -57,13 +57,14 @@ public class HistoryFragment extends CoreFragment {
         mViewModel = ViewModelProviders.of(this)
                 .get(HistoryViewModel.class);
 
-        mViewModel.history.observe(getViewLifecycleOwner(), new Observer<List<History>>() {
+
+        mViewModel.historyLiveData.observe(getActivity(), new Observer<List<History>>() {
             @Override
-            public void onChanged(List<History> history) {
-                adapter.update(history);
+            public void onChanged(List<History> histories) {
+                if (histories != null)
+                    adapter.update(histories);
             }
         });
-
 
     }
 }

@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.lawlett.quizapp.data.local.HistoryStorage;
-import com.lawlett.quizapp.data.local.IHistoryStorage;
+
 import com.lawlett.quizapp.data.local.QuizDatabase;
 import com.lawlett.quizapp.data.local.QuizLocalDataSource;
 import com.lawlett.quizapp.data.model.History;
@@ -17,7 +17,7 @@ import com.lawlett.quizapp.data.remote.QuizRepository;
 public class App extends Application {
     public static QuizRepository quizRepository;
     public static QuizDatabase quizDatabase;
-    public static IHistoryStorage historyStorage;
+   // public static IHistoryStorage historyStorage;
 
 
     @Override
@@ -31,6 +31,6 @@ public class App extends Application {
         quizDatabase.historyDao();
         quizRepository = new QuizRepository(new HistoryStorage(quizDatabase.historyDao()), new QuizApiClient());
 
-historyStorage= quizRepository;
+//historyStorage= quizRepository;
     }
 }

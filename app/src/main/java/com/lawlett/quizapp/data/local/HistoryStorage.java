@@ -6,9 +6,10 @@ import androidx.lifecycle.Transformations;
 import com.lawlett.quizapp.data.model.History;
 import com.lawlett.quizapp.data.model.QuizResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class HistoryStorage implements IHistoryStorage {
+public class HistoryStorage  {
     private HistoryDao mHistoryDao;
 
     public HistoryStorage(HistoryDao historyDao) {
@@ -19,44 +20,36 @@ public class HistoryStorage implements IHistoryStorage {
         return (int) mHistoryDao.insert(quizResult);
     }
 
-    @Override
     public void delete(int id) {
         mHistoryDao.deleteById(id);
     }
 
-    @Override
     public void deleteAll() {
         mHistoryDao.deleteAll();
     }
 
-    @Override
-    public QuizResult get(int id) {
+    public QuizResult get(int id){
         return mHistoryDao.get(id);
     }
 
-    @Override
     public LiveData<List<QuizResult>> getAll() {
         return mHistoryDao.getAll();
     }
 
-//    public void deleteQuizResultByID(int id) {
-//        mHistoryDao.deleteById(id);
-//    }
-//
-//    public void deleteAllQuizResult() {
-//        mHistoryDao.deleteAll();
-//    }
-//
-//    public QuizResult getQuizResultById(int id) {
-//        return mHistoryDao.get(id);
-//    }
-//
-//    public LiveData<List<QuizResult>> getAll() {
-//        return mHistoryDao.getAll();
-//    }
-
-    @Override
     public LiveData<List<History>> getAllHistory() {
-        return null;
+        return Transformations.map(getAll(), quizResult -> {
+            ArrayList<History> histories = new ArrayList<>();
+            if (quizResult.size() > 0) {
+                for (int i = 0; i < quizResult.size(); i++) {
+                    histories.add(i, new History(quizResult.get(i).getId(),
+                            quizResult.get(i).getCategory(),
+                            quizResult.get(i).getDifficulty(),
+                            quizResult.get(i).getCorrectAnswersAmount(),
+                            quizResult.get(i).getQuestions().size(),
+                            quizResult.get(i).getCreateAt()));
+                }
+            }
+            return histories;
+        });
     }
 }

@@ -60,8 +60,6 @@ public class MainFragment extends CoreFragment {
                         getDifficulty());
             }
         });
-
-
         seekBar.setOnSeekBarChangeListener(new SimpleOnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -70,7 +68,6 @@ public class MainFragment extends CoreFragment {
             }
         });
     }
-
     public String getDifficulty() {
         switch (spinnerdif.getSelectedItemPosition()) {
             case 0:
@@ -88,12 +85,4 @@ public class MainFragment extends CoreFragment {
         }
         return difficult;
     }
-
 }
-
-
-/*todo
-  Integer categoryId= null;         если категория null то запрос на any иначе (+8)
- if (categorySpinner.getSelectedIndex()=! 0) {
-categoryId= categorySpinner.getSelectedIndex()+8;
-*/
