@@ -46,7 +46,7 @@ public class HistoryFragment extends CoreFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.history_recycler);
-        adapter = new HistoryAdapter();
+        adapter = new HistoryAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
     }
@@ -57,7 +57,7 @@ public class HistoryFragment extends CoreFragment {
         mViewModel = ViewModelProviders.of(this)
                 .get(HistoryViewModel.class);
 
-
+//
         mViewModel.historyLiveData.observe(getActivity(), new Observer<List<History>>() {
             @Override
             public void onChanged(List<History> histories) {

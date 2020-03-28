@@ -17,7 +17,7 @@ import com.lawlett.quizapp.data.remote.QuizRepository;
 public class App extends Application {
     public static QuizRepository quizRepository;
     public static QuizDatabase quizDatabase;
-   // public static IHistoryStorage historyStorage;
+
 
 
     @Override
@@ -31,6 +31,5 @@ public class App extends Application {
         quizDatabase.historyDao();
         quizRepository = new QuizRepository(new HistoryStorage(quizDatabase.historyDao()), new QuizApiClient());
 
-//historyStorage= quizRepository;
     }
 }
